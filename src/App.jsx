@@ -1,7 +1,7 @@
 /** @format */
 
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
+// import "./App.css";
 import Home from "./components/pages/Home";
 import Products from "./components/pages/Products";
 import About from "./components/pages/About";
