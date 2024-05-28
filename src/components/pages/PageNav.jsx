@@ -5,29 +5,48 @@ import { AiOutlineShopping } from "react-icons/ai";
 import { FiUser } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function pageNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
 
   const handleToggle = (e) => {
     e.preventDefault();
     setIsMenuOpen(!isMenuOpen);
   };
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const triggerHeight = window.innerHeight * 0.8;
+      setIsSticky(scrollPosition >= triggerHeight);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <nav className="bg-white shadow-md ">
-      <div className="container mx-auto px-6 py-2 flex justify-between items-center">
-        <div className="flex items-center ">
+    <nav
+      className={` w-full py-4 z-10 transition-all duration-300 bg-[#e9fcfdf5] ${
+        isSticky ? "fixed top-0  shadow-sm" : "relative"
+      }`}
+    >
+      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div className="flex items-center">
           <img src="/images/Logo.png" alt="Logo" className="h-6 mr-4" />
         </div>
-        <ul className="hidden md:flex space-x-8 flex-1 justify-center p-5 text-[18px] font-semibold ">
+        <ul className="hidden md:flex space-x-8 flex-1 justify-center text-lg font-semibold">
           <li>
             <NavLink to="/" className="text-zinc-700 hover:text-gray-900">
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/about" className="text-zinc-700 hover:text-gray-900 ">
+            <NavLink to="/about" className="text-zinc-700 hover:text-gray-900">
               About
             </NavLink>
           </li>
@@ -48,9 +67,9 @@ function pageNav() {
             </NavLink>
           </li>
         </ul>
-        <div className="flex items-center space-x-4 text-[18px]">
-          <FiUser />
-          <AiOutlineShopping />
+        <div className="hidden md:flex items-center space-x-4 text-lg">
+          <FiUser className="hover:text-gray-900 cursor-pointer" />
+          <AiOutlineShopping className="hover:text-gray-900 cursor-pointer" />
         </div>
 
         <button onClick={handleToggle} className="md:hidden flex items-center">
@@ -62,12 +81,13 @@ function pageNav() {
         </button>
       </div>
       {isMenuOpen && (
-        <div className="md:hidden ">
-          <ul className="space-y-2 px-4 pb-2 ">
+        <div className="md:hidden bg-white shadow-md">
+          <ul className="space-y-2 px-4 pb-4">
             <li>
               <NavLink
                 to="/"
                 className="text-zinc-700 hover:text-gray-900 block"
+                onClick={() => setIsMenuOpen(false)}
               >
                 Home
               </NavLink>
@@ -76,6 +96,7 @@ function pageNav() {
               <NavLink
                 to="/about"
                 className="text-zinc-700 hover:text-gray-900 block"
+                onClick={() => setIsMenuOpen(false)}
               >
                 About
               </NavLink>
@@ -84,6 +105,7 @@ function pageNav() {
               <NavLink
                 to="/product"
                 className="text-zinc-700 hover:text-gray-900 block"
+                onClick={() => setIsMenuOpen(false)}
               >
                 Products
               </NavLink>
@@ -92,11 +114,16 @@ function pageNav() {
               <NavLink
                 to="/contact"
                 className="text-zinc-700 hover:text-gray-900 block"
+                onClick={() => setIsMenuOpen(false)}
               >
-                Contacts
+                Contact
               </NavLink>
             </li>
           </ul>
+          <div className="flex justify-center space-x-4 text-lg py-4">
+            <FiUser className="hover:text-gray-900 cursor-pointer" />
+            <AiOutlineShopping className="hover:text-gray-900 cursor-pointer" />
+          </div>
         </div>
       )}
     </nav>
