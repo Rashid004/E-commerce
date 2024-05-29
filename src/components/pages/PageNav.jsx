@@ -39,37 +39,36 @@ function pageNav() {
         <div className="flex items-center">
           <img src="/images/Logo.png" alt="Logo" className="h-6 mr-4" />
         </div>
-        <ul className="hidden md:flex space-x-8 flex-1 justify-center text-lg font-semibold">
+        <ul className="hidden md:flex space-x-8 flex-1 justify-center text-lg sm:text-[20px] font-semibold">
           <li>
-            <NavLink to="/" className="text-zinc-700 hover:text-gray-900">
+            <NavLink to="/" className="text-red-700 hover:text-red-900">
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/about" className="text-zinc-700 hover:text-gray-900">
+            <NavLink to="/about" className="text-red-700 hover:text-red-900">
               About
             </NavLink>
           </li>
           <li>
-            <NavLink
-              to="/product"
-              className="text-zinc-700 hover:text-gray-900"
-            >
+            <NavLink to="/product" className="text-red-700 hover:text-red-900">
               Products
             </NavLink>
           </li>
           <li>
-            <NavLink
-              to="/contact"
-              className="text-zinc-700 hover:text-gray-900"
-            >
+            <NavLink to="/contact" className="text-red-700 hover:text-red-900">
               Contact
             </NavLink>
           </li>
         </ul>
         <div className="hidden md:flex items-center space-x-4 text-lg">
-          <FiUser className="hover:text-gray-900 cursor-pointer" />
-          <AiOutlineShopping className="hover:text-gray-900 cursor-pointer" />
+          <FiUser size="2em" className="hover:text-red-900 cursor-pointer" />
+          <NavLink to="/cart">
+            <AiOutlineShopping
+              className="hover:text-red-900 cursor-pointer"
+              size="2em"
+            />
+          </NavLink>
         </div>
 
         <button onClick={handleToggle} className="md:hidden flex items-center">
@@ -86,7 +85,7 @@ function pageNav() {
             <li>
               <NavLink
                 to="/"
-                className="text-zinc-700 hover:text-gray-900 block"
+                className="text-red-700 hover:text-red-900 block"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
@@ -95,7 +94,7 @@ function pageNav() {
             <li>
               <NavLink
                 to="/about"
-                className="text-zinc-700 hover:text-gray-900 block"
+                className="text-red-700 hover:text-red-900 block"
                 onClick={() => setIsMenuOpen(false)}
               >
                 About
@@ -104,7 +103,7 @@ function pageNav() {
             <li>
               <NavLink
                 to="/product"
-                className="text-zinc-700 hover:text-gray-900 block"
+                className="text-red-700 hover:text-red-900 block"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Products
@@ -113,7 +112,7 @@ function pageNav() {
             <li>
               <NavLink
                 to="/contact"
-                className="text-zinc-700 hover:text-gray-900 block"
+                className="text-red-700 hover:text-red-900 block"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact
@@ -121,8 +120,8 @@ function pageNav() {
             </li>
           </ul>
           <div className="flex justify-center space-x-4 text-lg py-4">
-            <FiUser className="hover:text-gray-900 cursor-pointer" />
-            <AiOutlineShopping className="hover:text-gray-900 cursor-pointer" />
+            <FiUser className="hover:text-red-900 cursor-pointer" />
+            <AiOutlineShopping className="hover:text-red-900 cursor-pointer" />
           </div>
         </div>
       )}

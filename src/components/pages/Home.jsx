@@ -3,7 +3,8 @@
 import HeroSection from "./Home/HeroSection";
 import PageNav from "./PageNav";
 import ServiceSection from "./Home/ServiceSection";
-import Subscribe from "./Home/Subscribe";
+import Subscribe from "./Home/NewsLetter";
+import Company from "./Home/Company";
 
 function Home() {
   return (
@@ -12,6 +13,7 @@ function Home() {
       <HeroSection />
       <ServiceSection />
       <Subscribe />
+      <Company />
     </div>
   );
 }

@@ -5,13 +5,13 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
 const HeroSection = () => {
   return (
-    <div className="h-[95vh] bg-[#e9fcfdf5] text-center md:text-left">
+    <div className="h-[80vh] bg-sky-50 text-center md:text-left">
       <div className="max-w-6xl mx-auto px-8 grid grid-cols-1 md:grid-cols-2 gap-24 items-center md:text-left ">
         <div className="space-y-6 mt-24 ">
-          <h1 className="text-[44px] font-semibold leading-tight md:text-[52px] md:font-bold">
+          <h1 className="text-[40px] font-semibold leading-tight sm:text-[44px] md:text-[52px] md:font-bold">
             Sale 20% Off On Everything
           </h1>
-          <p className="text-lg leading-relaxed md:text-xl">
+          <p className="text-sm leading-relaxed sm:lg md:text-xl">
             Explicabo esse amet tempora quibusdam laudantium, laborum eaque
             magnam fugiat hic? Esse dicta aliquid error repudiandae earum
             suscipit fugiat molestias, veniam, vel architecto veritatis delectus
@@ -35,7 +35,7 @@ const HeroSection = () => {
         <div className="flex items-center justify-center md:justify-normal md:flex-none mt-2 md:mt-14">
           <img
             src="/images/Hero1.jpg"
-            className="w-[80%] rounded-[2px] shadow-lg md:w-full"
+            className="w-[75%] rounded-[2px] shadow-lg  md:w-full"
             alt="Woman enjoying Shopping"
           />
         </div>
