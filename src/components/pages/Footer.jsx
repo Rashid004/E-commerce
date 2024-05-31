@@ -83,22 +83,7 @@ function Footer() {
                 </li>
               </ul>
             </div>
-            <div>
-              <h2 className="mb-6 text-sm font-semibold text-white uppercase ">
-                Follow us
-              </h2>
-              <ul className="text-gray-500  font-medium">
-                <li className="mb-4">
-                  <Link className="hover:underline ">Github</Link>
-                </li>
-                <li className="mb-4">
-                  <Link className="hover:underline">Discord</Link>
-                </li>
-                <li>
-                  <Link className="hover:underline">Twiter X</Link>
-                </li>
-              </ul>
-            </div>
+
             <div>
               <h2 className="mb-6 text-sm font-semibold text-white uppercase ">
                 Account

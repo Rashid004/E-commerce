@@ -1,12 +1,19 @@
 /** @format */
 
+import Footer from "./Footer";
+import HeroSection from "./Home/HeroSection";
+import ServiceSection from "./Home/ServiceSection";
+import Testomina from "./Home/Testomina";
 import PageNav from "./PageNav";
 
 function About() {
   return (
     <div>
       <PageNav />
-      <div className="text-center text-lg bg-zinc-300">About page</div>
+      <HeroSection />
+      <ServiceSection />
+      <Testomina />
+      <Footer />
     </div>
   );
 }
