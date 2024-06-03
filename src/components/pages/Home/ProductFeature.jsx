@@ -59,10 +59,10 @@ function ProductFeature() {
               <p className="font-semibold text-lg">${product.price}</p>
             </div>
             <div className="flex flex-col  sm:justify-center lg:justify-between items-center sm:mt-2 gap-2 mt-4">
-              <button className="bg-red-500 text-white px-4 py-2 w-full  hover:bg-transparent hover:text-black transition-colors duration-300 font-medium rounded-sm">
+              <button className="bg-red-500  border text-white px-4 py-2 w-full  hover:bg-transparent hover:text-black transition-colors duration-300 font-medium rounded-sm">
                 Add to cart
               </button>
-              <button className="bg-red-500 text-white px-4 py-2 w-full  hover:bg-transparent hover:text-black transition-colors duration-300 font-medium rounded-sm">
+              <button className="bg-red-500 border text-white px-4 py-2 w-full  hover:bg-transparent hover:text-black transition-colors duration-300 font-medium rounded-sm">
                 Buy now
               </button>
             </div>

@@ -32,19 +32,19 @@ function Contact() {
         </div>
 
         <form action="submit" className="bg-sky-200 mt-10">
-          <div className="flex items-center flex-col justify-center gap-4 py-4">
+          <div className="flex items-center flex-col justify-center gap-4  py-4">
             <input
-              className="block w-1/4 py-3 px-2 rounded-sm border-none focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 "
+              className="block w-2/3 md:w-1/3 lg:h-1/4 py-2 md:py-3 px-2 rounded-sm border-none focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 "
               type="text"
               placeholder="Full Name"
             />
             <input
-              className="block w-1/4 py-3 px-2 rounded-sm border-none focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 "
+              className="block w-2/3 md:w-1/3 lg:h-1/4 py-2 md:py-3 px-2 rounded-sm border-none focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 "
               type="text"
               placeholder="Last Name"
             />
             <input
-              className="block w-1/4 py-3 px-2 rounded-sm border-none focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 "
+              className="block w-2/3 md:w-1/3 lg:h-1/4 py-2 md:py-3 px-2 rounded-sm border-none focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 "
               type="email"
               placeholder="Email"
             />
@@ -53,7 +53,7 @@ function Contact() {
               id="message"
               name="message"
               placeholder="Enter Your Message"
-              className=" w-1/4 h-32 py-3 px-4 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 resize-none"
+              className="w-2/3 md:w-1/3 lg:h-1/4 h-28 md:h-32 py-3 px-4 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 resize-none"
             />
             <div className="flex items-center justify-between">
               <button
