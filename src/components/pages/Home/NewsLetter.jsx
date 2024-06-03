@@ -2,7 +2,7 @@
 
 function NewsLetter() {
   return (
-    <div className="mx-auto max-w-7xl px-2 py-4 md:px-8 bg-sky-50 pb-20 rounded-sm">
+    <div className="mx-auto max-w-6xl px-2 py-4 md:px-8 bg-sky-50 pb-20 rounded-sm">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between">
         <div className="w-full md:w-2/3 lg:w-1/2 text-center">
           <h2 className="text-xl md:text-3xl font-bold text-black sm:text-center md:text-left">
@@ -41,7 +41,7 @@ function NewsLetter() {
         </div>
         <div className="mt-12 w-full md:w-2/3 md:mt-0 lg:w-1/2 flex items-center justify-center lg:flex-none">
           <img
-            className="h-2/3 w-2/3  rounded-md object-cover"
+            className="h-2/3 w-2/3 md:w-5/6 rounded-md object-cover"
             src="/images/Hero3.jpg"
             alt="Newsletter"
           />

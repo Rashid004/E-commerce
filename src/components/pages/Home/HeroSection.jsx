@@ -5,7 +5,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
 const HeroSection = () => {
   return (
-    <div className="h-[80vh] bg-sky-50 text-center md:text-left mb-3 sm:mb-6">
+    <div className="h-[90vh] bg-sky-50 text-center md:text-left mb-3 sm:mb-6">
       <div className="max-w-6xl mx-auto px-4 sm:px-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-24 items-center md:text-left ">
         <div className="space-y-6 mt-12 sm:mt-24 ">
           <h1 className="text-[30px] sm:text-[40px] font-semibold leading-tight md:text-[44px] lg:text-[52px] lg:font-bold">

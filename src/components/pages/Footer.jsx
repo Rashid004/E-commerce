@@ -19,7 +19,7 @@ function Footer() {
               <span>ShopEasy</span>
             </Link>
           </div>
-          <div>
+          <div className="ml-6 md:ml-4">
             <h2 className="mb-6 text-sm font-semibold text-white uppercase ">
               Address
             </h2>

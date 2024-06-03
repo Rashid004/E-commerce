@@ -1,6 +1,6 @@
 /** @format */
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { AiOutlineShopping } from "react-icons/ai";
 import { FiUser } from "react-icons/fi";
 import { IoClose } from "react-icons/io5";
@@ -29,6 +29,12 @@ function pageNav() {
     };
   }, []);
 
+  const location = useLocation();
+
+  const isLinkActive = (path) => {
+    return location.pathname === path;
+  };
+
   return (
     <nav
       className={` w-full py-4 z-10 transition-all duration-300 bg-[#e9fcfdf5] ${
@@ -41,23 +47,35 @@ function pageNav() {
         </div>
         <ul className="hidden md:flex space-x-8 flex-1 justify-center text-lg sm:text-[20px] font-semibold">
           <li>
-            <NavLink to="/" className="text-red-700 hover:text-red-900">
+            <NavLink to="/" className="text-red-700 hover:text-red-900  ">
               Home
+              {isLinkActive("/") && (
+                <div className="font-bold w-full h-[3px] mt-1 bg-red-600"></div>
+              )}
             </NavLink>
           </li>
           <li>
             <NavLink to="/about" className="text-red-700 hover:text-red-900">
               About
+              {isLinkActive("/about") && (
+                <div className="font-bold w-full h-[3px] mt-1 bg-red-600"></div>
+              )}
             </NavLink>
           </li>
           <li>
             <NavLink to="/product" className="text-red-700 hover:text-red-900">
               Products
+              {isLinkActive("/product") && (
+                <div className="font-bold w-full h-[3px] mt-1 bg-red-600"></div>
+              )}
             </NavLink>
           </li>
           <li>
             <NavLink to="/contact" className="text-red-700 hover:text-red-900">
               Contact
+              {isLinkActive("/contact") && (
+                <div className="font-bold w-full h-[3px] mt-1 bg-red-600"></div>
+              )}
             </NavLink>
           </li>
         </ul>

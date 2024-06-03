@@ -3,7 +3,7 @@
 import Footer from "./Footer";
 import HeroSection from "./Home/HeroSection";
 import ServiceSection from "./Home/ServiceSection";
-import Testomina from "./Home/Testomina";
+import Testomonial from "./Home/Testomonial";
 import PageNav from "./PageNav";
 
 function About() {
@@ -12,7 +12,7 @@ function About() {
       <PageNav />
       <HeroSection />
       <ServiceSection />
-      <Testomina />
+      <Testomonial />
       <Footer />
     </div>
   );
