@@ -1,7 +1,7 @@
 /** @format */
 
 function Cart() {
-  return <div>Cart</div>;
+  return <div>Cart sect</div>;
 }
 
 export default Cart;

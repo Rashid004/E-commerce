@@ -2,7 +2,8 @@
 
 import { NavLink, useLocation } from "react-router-dom";
 import { AiOutlineShopping } from "react-icons/ai";
-import { FiUser } from "react-icons/fi";
+import { CiLogin } from "react-icons/ci";
+
 import { IoClose } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useEffect, useState } from "react";
@@ -79,12 +80,18 @@ function pageNav() {
             </NavLink>
           </li>
         </ul>
-        <div className="hidden md:flex items-center space-x-4 text-lg">
-          <FiUser size="2em" className="hover:text-red-900 cursor-pointer" />
+        <div className="hidden md:flex items-center space-x-5 text-lg ">
+          <div className="flex items-center justify-center border bg-gray-200 px-2 py-1 rounded-full">
+            <h3 className="text-xl font-semibold">Login</h3>
+            <CiLogin
+              size="1.6em"
+              className="hover:text-red-900 cursor-pointer"
+            />
+          </div>
           <NavLink to="/cart">
             <AiOutlineShopping
               className="hover:text-red-900 cursor-pointer"
-              size="2em"
+              size="2.1em"
             />
           </NavLink>
         </div>
@@ -99,47 +106,62 @@ function pageNav() {
       </div>
       {isMenuOpen && (
         <div className="md:hidden bg-white shadow-md">
-          <ul className="space-y-2 px-4 pb-4">
+          <ul className="space-y-2 px-4 pb-4 text-center font-medium">
             <li>
               <NavLink
                 to="/"
-                className="text-red-700 hover:text-red-900 block"
+                className="text-red-700 hover:text-red-900 block text-xl pt-4"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
+                {isLinkActive("/") && (
+                  <div className="mx-auto font-bold w-7 h-[3px] mt-1 bg-red-600"></div>
+                )}
               </NavLink>
             </li>
             <li>
               <NavLink
                 to="/about"
-                className="text-red-700 hover:text-red-900 block"
+                className="text-red-700 hover:text-red-900 block text-xl"
                 onClick={() => setIsMenuOpen(false)}
               >
                 About
+                {isLinkActive("/about") && (
+                  <div className="mx-auto font-bold w-7 h-[3px] mt-1 bg-red-600"></div>
+                )}
               </NavLink>
             </li>
             <li>
               <NavLink
                 to="/product"
-                className="text-red-700 hover:text-red-900 block"
+                className="text-red-700 hover:text-red-900 block text-xl"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Products
+                {isLinkActive("/product") && (
+                  <div className="mx-auto font-bold w-7 h-[3px] mt-1 bg-red-600"></div>
+                )}
               </NavLink>
             </li>
             <li>
               <NavLink
                 to="/contact"
-                className="text-red-700 hover:text-red-900 block"
+                className="text-red-700 hover:text-red-900 block text-xl"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact
+                {isLinkActive("/contact") && (
+                  <div className="mx-auto font-bold w-7 h-[3px] mt-1 bg-red-600"></div>
+                )}
               </NavLink>
             </li>
           </ul>
-          <div className="flex justify-center space-x-4 text-lg py-4">
-            <FiUser className="hover:text-red-900 cursor-pointer" />
-            <AiOutlineShopping className="hover:text-red-900 cursor-pointer" />
+          <div className="flex justify-center space-x-4 text-lg py-4 font-semibold">
+            <he>Login</he>
+            <AiOutlineShopping
+              className="hover:text-red-900 cursor-pointer "
+              size="1.6em"
+            />
           </div>
         </div>
       )}
