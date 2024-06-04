@@ -81,13 +81,15 @@ function pageNav() {
           </li>
         </ul>
         <div className="hidden md:flex items-center space-x-5 text-lg ">
-          <div className="flex items-center justify-center border bg-gray-200 px-2 py-1 rounded-full">
-            <h3 className="text-xl font-semibold">Login</h3>
-            <CiLogin
-              size="1.6em"
-              className="hover:text-red-900 cursor-pointer"
-            />
-          </div>
+          <NavLink to="/login ">
+            <div className="flex items-center justify-center border bg-gray-200 px-2 py-1 rounded-full">
+              <h3 className="text-xl font-semibold">Login</h3>
+              <CiLogin
+                size="1.1em"
+                className="hover:text-red-900 cursor-pointer"
+              />
+            </div>
+          </NavLink>
           <NavLink to="/cart">
             <AiOutlineShopping
               className="hover:text-red-900 cursor-pointer"
@@ -157,7 +159,15 @@ function pageNav() {
             </li>
           </ul>
           <div className="flex justify-center space-x-4 text-lg py-4 font-semibold">
-            <he>Login</he>
+            <NavLink to="/login ">
+              <div className="flex items-center justify-center border bg-gray-200 px-1 py-1 rounded-full">
+                <h3 className="text-sm font-semibold">Login</h3>
+                <CiLogin
+                  size="1em"
+                  className="hover:text-red-900 cursor-pointer"
+                />
+              </div>
+            </NavLink>
             <AiOutlineShopping
               className="hover:text-red-900 cursor-pointer "
               size="1.6em"
