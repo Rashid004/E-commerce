@@ -3,50 +3,67 @@
 import { useEffect, useState } from "react";
 import Footer from "./Footer";
 import PageNav from "./PageNav";
-import { IoIosArrowDown } from "react-icons/io";
+import { FaRegStarHalfStroke } from "react-icons/fa6";
+import { FaStar } from "react-icons/fa";
+
 import axios from "axios";
 
 function Products() {
   const [allCategories, setAllCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
+  const [selectProduct, setSelectProduct] = useState(null);
 
-  // useEffect(() => {
-  //   const getProductsCatogrie = async () => {
-  //     try {
-  //       const response = await fetch(
-  //         "'https://dummyjson.com/products/categories'"
-  //       );
-  //       const data = await response.json();
-  //       setAllCategories(data);
-  //       console.log(data);
-  //     } catch (err) {
-  //       setError("Failed to fetch categories.");
-  //     }
-  //   };
-  //   getProductsCatogrie();
-  // }, []);
+  // Get Product Catogries from APi
 
   useEffect(() => {
-    const getProducts = async () => {
+    const getProductsCatogrie = async () => {
       try {
-        const res = await axios(
-          "https://dummyjson.com/products/category/smartphones"
-        );
-        console.log(res.data);
-        // const data = await res.json();
-        console.log(res.data.products);
-        setProducts(res.data.products);
+        const res = await axios("https://dummyjson.com/products/categories");
+
+        console.log("Categories response:", res);
+        setAllCategories(res.data);
       } catch (err) {
         setError("Failed to fetch categories.");
       }
     };
-    getProducts();
+    getProductsCatogrie();
   }, []);
+
+  // Get Products From Api
+
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        if (selectProduct) {
+          const res = await axios.get(
+            `https://dummyjson.com/products/category/${selectProduct}`
+          );
+          console.log("Products response:", res.data.products);
+          setProducts(res.data.products);
+        } else {
+          const res = await axios.get(
+            "https://dummyjson.com/products/category/smartphones"
+          );
+          console.log("Products response:", res.data.products);
+          setProducts(res.data.products);
+        }
+      } catch (err) {
+        setError("Failed to fetch products.");
+      }
+    };
+    getProducts();
+  }, [selectProduct]);
 
   if (error) {
     return <div>Error: {error}</div>;
   }
+
+  const handleFilterProduct = (categorySlug) => {
+    console.log("Selected category:", categorySlug);
+    setSelectProduct(categorySlug);
+    console.log(products);
+  };
 
   return (
     <>
@@ -58,7 +75,7 @@ function Products() {
             <div className="mx-auto w-12 h-1 bg-red-600 rounded-sm mt-2 "></div>
           </h2>
         </div>
-        <div className="my-24 flex items-center justify-evenly">
+        <div className="mt-24 mb-6 flex items-center justify-evenly">
           <div className="border border-gray-200 flex items-center">
             <input
               className="px-4 py-2 border-none outline-none"
@@ -71,8 +88,35 @@ function Products() {
             </button>
           </div>
         </div>
-
-        <div></div>
+        <div className="flex items-center justify-center flex-wrap gap-3 mb-20">
+          {allCategories
+            .filter(
+              (filterItem) =>
+                ![
+                  "womens-watches",
+                  "womens-shoes",
+                  "womens-jewellery",
+                  "womens-dresses",
+                  "vehicle",
+                  "sunglasses",
+                  "motorcycle",
+                  "kitchen-accessories",
+                  "groceries",
+                  "furniture",
+                  "mobile-accessories",
+                ].includes(filterItem.slug)
+            )
+            .map((allCatogrie, index) => (
+              <div key={index} className="border rounded-md">
+                <button
+                  className="bg-indigo-700 text-white px-3 py-2 hover:bg-transparent hover:text-black"
+                  onClick={() => handleFilterProduct(allCatogrie.slug)}
+                >
+                  {allCatogrie.name}
+                </button>
+              </div>
+            ))}
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-11/12 mx-auto">
           {products.map((item, index) => (
             <div
@@ -80,15 +124,19 @@ function Products() {
               className="bg-sky-50 px-4 pt-4 pb-4 sm:px-5 sm:py-5 md:px-6 md:py-5 lg:px-7 lg:py-6 rounded-md h-auto"
             >
               <img
-                className="max-w-full max-h-[300px] object-contain hover:scale-110 transition-transform duration-300"
-                src={item.images[1]}
+                className="max-w-full max-h-[250px] object-contain object-center block hover:scale-110 transition-transform duration-300"
+                src={item.thumbnail}
                 alt="Product"
               />
               <div className="flex items-center justify-between mt-4 mx-2">
                 <h2 className="font-semibold text-lg">{item.title}</h2>
                 <p className="font-semibold text-lg">${item.price}</p>
-                {/* <p className="font-semibold text-lg">{item.rating}</p> */}
               </div>
+              <p className="font-medium text-sm text-gray-600 ml-2 flex items-center gap-1">
+                Rating:{item.rating}
+                <FaStar />
+                <FaRegStarHalfStroke />
+              </p>
 
               <p className="text-sm text-gray-500 pt-2 ml-2">
                 {item.description.slice(0, 110)}
