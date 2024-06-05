@@ -2,7 +2,7 @@
 
 function NewsLetter() {
   return (
-    <div className="mx-auto max-w-6xl px-2 py-4 md:px-8 bg-sky-50 pb-20 rounded-sm h-full">
+    <div className="mx-auto max-w-6xl px-2 py-4 md:px-8 bg-gray-100 pb-20 rounded-sm h-full">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between">
         <div className="w-full md:w-2/3 lg:w-1/2 text-center">
           <h2 className="text-xl md:text-3xl font-bold text-black sm:text-center md:text-left">
@@ -20,13 +20,13 @@ function NewsLetter() {
 
           <div className="mx-auto md:mx-0 mt-6 flex w-full max-w-md items-center flex-col space-y-4">
             <input
-              className=" flex h-10 w-2/3 md:w-[80%] lg:w-full rounded-md border border-red/30 bg-transparent px-2 md:px-3 py-2 text-sm placeholder:text-gray-600 focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
+              className=" flex h-10 w-2/3 md:w-[80%] lg:w-full rounded-md border border-red/30 bg-transparent px-2 md:px-3 py-2 text-sm placeholder:text-gray-600 placeholder:font-medium focus:outline-none focus:ring-1 focus:ring-black/30 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 bg-gray-300"
               type="email"
               placeholder="Email"
             ></input>
             <button
               type="button"
-              className=" w-1/2 md:w-[60%] lg:w-full rounded-md bg-red-600 px-3  py-2 text-sm  sm:text-lg md:text-xl font-semibold text-white shadow-sm hover:bg-red/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+              className=" w-1/2 md:w-[60%] lg:w-full rounded-md bg-indigo-600 px-3  py-2 text-sm  sm:text-lg md:text-xl font-semibold text-white shadow-sm hover:bg-red/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
             >
               Subscribe
             </button>

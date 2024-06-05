@@ -10,11 +10,12 @@ function Contact() {
       <div className="py-4 sm:pb-32">
         <h2 className="text-center text-[32px] font-medium sm:font-semibold md:font-bold sm:text-[38px] md:text-[44px] mb-4">
           Contact Us
-          <div className="mx-auto w-1/12 h-1 bg-red-600 rounded-sm mt-2"></div>
+          <div className="mx-auto w-12 h-1 bg-gray-800 rounded-sm mt-2"></div>
         </h2>
         <div className="max-w-7xl mx-auto px-6 flex flex-col items-center">
           <p className="text-center text-gray-600 leading-tight mb-8">
-            We'd love to hear from you! Here's how you can reach us...
+            We&lsquo;d love to hear from you! Here&lsquos;s how you can reach
+            us...
           </p>
           <div className="w-full h-64 sm:h-80 md:h-96">
             <iframe
@@ -31,7 +32,7 @@ function Contact() {
           </div>
         </div>
 
-        <form action="submit" className="bg-sky-100 mt-10">
+        <form action="submit" className="bg-gray-50 mt-10">
           <div className="flex items-center flex-col justify-center gap-4  py-4">
             <input
               className="block w-2/3 md:w-1/3 lg:h-1/4 py-2 md:py-3 px-2 rounded-sm border border-gray-300 focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-red-500 "
@@ -58,7 +59,7 @@ function Contact() {
             <div className="flex items-center justify-between">
               <button
                 type="submit"
-                className="bg-red-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline hover:bg-red-700"
+                className="bg-indigo-500 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline hover:bg-indigo-700"
               >
                 Send Message
               </button>

@@ -38,7 +38,7 @@ function pageNav() {
 
   return (
     <nav
-      className={` w-full py-4 z-10 transition-all duration-300 bg-[#e9fcfdf5] ${
+      className={` w-full py-4 z-10 transition-all duration-300 bg-gray-50 ${
         isSticky ? "fixed top-0  shadow-sm" : "relative"
       }`}
     >
@@ -48,34 +48,34 @@ function pageNav() {
         </div>
         <ul className="hidden md:flex space-x-8 flex-1 justify-center text-lg sm:text-[20px] font-semibold">
           <li>
-            <NavLink to="/" className="text-red-700 hover:text-red-900  ">
+            <NavLink to="/" className="text-black hover:text-indigo-900  ">
               Home
               {isLinkActive("/") && (
-                <div className="font-bold w-full h-[3px] mt-1 bg-red-600"></div>
+                <div className="font-bold w-full h-[3px] mt-1 bg-gray-900"></div>
               )}
             </NavLink>
           </li>
           <li>
-            <NavLink to="/about" className="text-red-700 hover:text-red-900">
+            <NavLink to="/about" className="text-black hover:text-indigo-900">
               About
               {isLinkActive("/about") && (
-                <div className="font-bold w-full h-[3px] mt-1 bg-red-600"></div>
+                <div className="font-bold w-full h-[3px] mt-1 bg-gray-900"></div>
               )}
             </NavLink>
           </li>
           <li>
-            <NavLink to="/product" className="text-red-700 hover:text-red-900">
+            <NavLink to="/product" className="text-black hover:text-indigo-900">
               Products
               {isLinkActive("/product") && (
-                <div className="font-bold w-full h-[3px] mt-1 bg-red-600"></div>
+                <div className="font-bold w-full h-[3px] mt-1 bg-gray-900"></div>
               )}
             </NavLink>
           </li>
           <li>
-            <NavLink to="/contact" className="text-red-700 hover:text-red-900">
+            <NavLink to="/contact" className="text-black hover:text-indigo-900">
               Contact
               {isLinkActive("/contact") && (
-                <div className="font-bold w-full h-[3px] mt-1 bg-red-600"></div>
+                <div className="font-bold w-full h-[3px] mt-1 bg-gray-900"></div>
               )}
             </NavLink>
           </li>
@@ -86,13 +86,13 @@ function pageNav() {
               <h3 className="text-xl font-semibold">Login</h3>
               <CiLogin
                 size="1.1em"
-                className="hover:text-red-900 cursor-pointer"
+                className="hover:text-indigo-900 cursor-pointer"
               />
             </div>
           </NavLink>
           <NavLink to="/cart">
             <AiOutlineShopping
-              className="hover:text-red-900 cursor-pointer"
+              className="hover:text-indigo-900 cursor-pointer"
               size="2.1em"
             />
           </NavLink>
@@ -112,48 +112,48 @@ function pageNav() {
             <li>
               <NavLink
                 to="/"
-                className="text-red-700 hover:text-red-900 block text-xl pt-4"
+                className="text-black hover:text-indigo-900 block text-xl pt-4"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Home
                 {isLinkActive("/") && (
-                  <div className="mx-auto font-bold w-7 h-[3px] mt-1 bg-red-600"></div>
+                  <div className="mx-auto font-bold w-7 h-[3px] mt-1 bg-gray-900"></div>
                 )}
               </NavLink>
             </li>
             <li>
               <NavLink
                 to="/about"
-                className="text-red-700 hover:text-red-900 block text-xl"
+                className="text-black hover:text-indigo-900 block text-xl"
                 onClick={() => setIsMenuOpen(false)}
               >
                 About
                 {isLinkActive("/about") && (
-                  <div className="mx-auto font-bold w-7 h-[3px] mt-1 bg-red-600"></div>
+                  <div className="mx-auto font-bold w-7 h-[3px] mt-1 bg-gray-900"></div>
                 )}
               </NavLink>
             </li>
             <li>
               <NavLink
                 to="/product"
-                className="text-red-700 hover:text-red-900 block text-xl"
+                className="text-black hover:text-indigo-900 block text-xl"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Products
                 {isLinkActive("/product") && (
-                  <div className="mx-auto font-bold w-7 h-[3px] mt-1 bg-red-600"></div>
+                  <div className="mx-auto font-bold w-7 h-[3px] mt-1 bg-gray-900"></div>
                 )}
               </NavLink>
             </li>
             <li>
               <NavLink
                 to="/contact"
-                className="text-red-700 hover:text-red-900 block text-xl"
+                className="text-black hover:text-indigo-900 block text-xl"
                 onClick={() => setIsMenuOpen(false)}
               >
                 Contact
                 {isLinkActive("/contact") && (
-                  <div className="mx-auto font-bold w-7 h-[3px] mt-1 bg-red-600"></div>
+                  <div className="mx-auto font-bold w-7 h-[3px] mt-1 bg-gray-900"></div>
                 )}
               </NavLink>
             </li>
@@ -164,12 +164,12 @@ function pageNav() {
                 <h3 className="text-sm font-semibold">Login</h3>
                 <CiLogin
                   size="1em"
-                  className="hover:text-red-900 cursor-pointer"
+                  className="hover:text-indigo-900 cursor-pointer"
                 />
               </div>
             </NavLink>
             <AiOutlineShopping
-              className="hover:text-red-900 cursor-pointer "
+              className="hover:text-indigo-900 cursor-pointer "
               size="1.6em"
             />
           </div>

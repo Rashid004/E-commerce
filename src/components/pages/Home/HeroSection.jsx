@@ -20,13 +20,13 @@ const HeroSection = () => {
           <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 items-center justify-center md:justify-start ">
             <Link
               to="/product"
-              className="btn bg-red-600 text-white py-3 px-6 rounded-[4px] hover:bg-red-700 w-full sm:w-auto"
+              className="btn bg-indigo-600 text-white py-3 px-8 rounded-md hover:bg-indigo-700 w-full sm:w-auto font-medium"
             >
               Shop Now
             </Link>
             <Link
               to="#how"
-              className="btn border border-red-600 text-red-600 hover:bg-gray-200 py-3 px-6 rounded-[4px] w-full sm:w-auto"
+              className="btn border border-indigo-600 text-indigo-600 hover:bg-indigo-200 py-3 px-6 rounded-[4px] w-full sm:w-auto"
             >
               Learn more &darr;
             </Link>

@@ -11,12 +11,12 @@ function ServiceSection() {
         <div className="text-center my-4 sm">
           <h2 className="text-[32px] font-medium sm:font-semibold leading-tight space-y-6 md:font-bold sm:text-[38px] md:text-[44px] ">
             Our Service
-            <div className="mx-auto w-12 h-1 bg-red-600 rounded-sm mt-2"></div>
+            <div className="mx-auto w-12 h-1 bg-gray-800 rounded-sm mt-2"></div>
           </h2>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 w-11/12 mx-auto max-w-6xl ">
           <div className="flex items-center flex-col  px-4 py-[14px] md:py-[24px]  rounded-[4px] text-center md:px-6">
-            <LiaShippingFastSolid size="4em" color="red" />
+            <LiaShippingFastSolid size="4em" color="indigo" />
             <h2 className="text-[18px] sm:text-[26px] font-semibold md:font-bold mt-2 md:text-[32px]">
               <span>Free Delivery</span>
             </h2>
@@ -28,7 +28,7 @@ function ServiceSection() {
           </div>
 
           <div className="flex items-center flex-col  px-4 py-[14px] md:py-[24px]  rounded-[4px] text-center md:px-6">
-            <RiRefund2Line size="4em" color="red" />
+            <RiRefund2Line size="4em" color="indigo" />
             <h2 className="text-[18px] sm:text-[26px] font-semibold mt-2 md:text-[32px] md:font-bold">
               <span>Refund 100%</span>
             </h2>
@@ -39,7 +39,7 @@ function ServiceSection() {
             </p>
           </div>
           <div className="flex items-center flex-col  px-4 py-[14px] md:py-[24px]  rounded-[4px] text-center md:px-6">
-            <RiSecurePaymentFill size="4em" color="red" />
+            <RiSecurePaymentFill size="4em" color="indigo" />
             <h2 className="text-[18px] sm:text-[26px] font-semibold mt-2 md:text-[32px] md:font-bold">
               <span>Secure Pay</span>
             </h2>
@@ -50,7 +50,7 @@ function ServiceSection() {
             </p>
           </div>
           <div className="flex items-center flex-col  px-4 py-[14px] md:py-[24px]  rounded-[4px] text-center md:px-6">
-            <TbReplace size="4em" color="red" />
+            <TbReplace size="4em" color="indigo" />
             <h2 className="text-[18px] sm:text-[26px] font-semibold mt-2 md:text-[32px] md:font-bold">
               <span>7 day replace</span>
             </h2>

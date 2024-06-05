@@ -47,7 +47,7 @@ function ProductFeature() {
         {products.map((product) => (
           <div
             key={product.id}
-            className="bg-sky-50 px-4 pt-4 pb-4 sm:px-5 sm:py-5 md:px-6 md:py-5 lg:px-7 lg:py-6 rounded-md"
+            className="bg-gray-200 focus:border-gray-200 focus:ring-1 px-4 pt-4 pb-4 sm:px-5 sm:py-5 md:px-6 md:py-5 lg:px-7 lg:py-6 rounded-lg"
           >
             <img
               className="w-full hover:scale-110 transition-transform duration-300"
@@ -59,10 +59,10 @@ function ProductFeature() {
               <p className="font-semibold text-lg">${product.price}</p>
             </div>
             <div className="flex flex-col  sm:justify-center lg:justify-between items-center sm:mt-2 gap-2 mt-4">
-              <button className="bg-red-500  border text-white px-4 py-2 w-full  hover:bg-transparent hover:text-black transition-colors duration-300 font-medium rounded-sm">
+              <button className="bg-indigo-600 border border-blue-200 text-white px-4 py-2 w-full rounded-md  hover:bg-transparent hover:text-black transition-colors duration-300 font-medium ">
                 Add to cart
               </button>
-              <button className="bg-red-500 border text-white px-4 py-2 w-full  hover:bg-transparent hover:text-black transition-colors duration-300 font-medium rounded-sm">
+              <button className="bg-indigo-600 border border-blue-200 text-white px-4 py-2 w-full  hover:bg-transparent hover:text-black transition-colors duration-300 font-medium rounded-md">
                 Buy now
               </button>
             </div>

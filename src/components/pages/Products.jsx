@@ -8,7 +8,7 @@ import { FaStar } from "react-icons/fa";
 
 import axios from "axios";
 
-function Products() {
+function Products({ handleAddToCart }) {
   const [allCategories, setAllCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
@@ -43,7 +43,7 @@ function Products() {
           setProducts(res.data.products);
         } else {
           const res = await axios.get(
-            "https://dummyjson.com/products/category/smartphones"
+            "https://dummyjson.com/products/category/sports-accessories"
           );
           console.log("Products response:", res.data.products);
           setProducts(res.data.products);
@@ -72,7 +72,7 @@ function Products() {
         <div className="text-center my-4">
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-medium sm:font-semibold md:font-bold leading-tight space-y-6 ">
             Shop With Us
-            <div className="mx-auto w-12 h-1 bg-red-600 rounded-sm mt-2 "></div>
+            <div className="mx-auto w-12 h-1 bg-gray-800 rounded-sm mt-2 "></div>
           </h2>
         </div>
         <div className="mt-24 mb-6 flex items-center justify-evenly">
@@ -109,7 +109,7 @@ function Products() {
             .map((allCatogrie, index) => (
               <div key={index} className="border rounded-md">
                 <button
-                  className="bg-indigo-700 text-white px-3 py-2 hover:bg-transparent hover:text-black"
+                  className="bg-indigo-600 transition-all text-white px-3 py-2 hover:bg-transparent hover:text-black"
                   onClick={() => handleFilterProduct(allCatogrie.slug)}
                 >
                   {allCatogrie.name}
@@ -121,7 +121,7 @@ function Products() {
           {products.map((item, index) => (
             <div
               key={index}
-              className="bg-sky-50 px-4 pt-4 pb-4 sm:px-5 sm:py-5 md:px-6 md:py-5 lg:px-7 lg:py-6 rounded-md h-auto"
+              className="bg-gray-200 px-4 pt-4 pb-4 sm:px-5 sm:py-5 md:px-6 md:py-5 lg:px-7 lg:py-6 rounded-lg h-auto"
             >
               <img
                 className="max-w-full max-h-[250px] object-contain object-center block hover:scale-110 transition-transform duration-300"
@@ -143,10 +143,13 @@ function Products() {
               </p>
 
               <div className="flex flex-col  sm:justify-center lg:justify-between items-center sm:mt-2 gap-2 mt-4">
-                <button className="bg-red-500  border text-white px-4 py-2 w-full  hover:bg-transparent hover:text-black transition-colors duration-300 font-medium rounded-sm">
+                <button
+                  onClick={() => handleAddToCart(item)}
+                  className="bg-indigo-600  border border-blue-200 text-white px-4 py-2 w-full  hover:bg-transparent hover:text-black transition-colors duration-300 font-medium rounded-md"
+                >
                   Add to cart
                 </button>
-                <button className="bg-red-500 border text-white px-4 py-2 w-full  hover:bg-transparent hover:text-black transition-colors duration-300 font-medium rounded-sm">
+                <button className="bg-indigo-600 border border-blue-200 text-white px-4 py-2 w-full  hover:bg-transparent hover:text-black transition-colors duration-300 font-medium rounded-md">
                   Buy now
                 </button>
               </div>

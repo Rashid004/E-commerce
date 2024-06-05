@@ -3,17 +3,12 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
 function Testomonial() {
   return (
-    <div className="py-4 sm:pb-32">
+    <div className="py-4 sm:pb-32 bg-gray-50">
       <h2 className="text-center text-[32px] font-medium sm:font-semibold md:font-bold  sm:text-[38px] md:text-[44px] mb-4">
         Customers Testimonial
-        <div className="mx-auto w-12 h-1 bg-red-600 rounded-sm mt-2 "></div>
+        <div className="mx-auto w-12 h-1 bg-gray-800 rounded-sm mt-2 "></div>
       </h2>
       <div className="max-w-6xl mx-auto px-6  flex justify-center items-center">
-        {/* <div className="flex items-center  gap-2 text-white mt-4 md:mt-2 justify-between">
-          <button className="bg-red-500 p-4 rounded-full">
-            <FaArrowLeft />
-          </button>
-        </div> */}
         <div className="mt-6 ">
           <div className="flex items-center justify-center flex-col">
             <img
@@ -38,10 +33,10 @@ function Testomonial() {
         {/* <button className="bg-red-500 p-4 rounded-full">
             <FaArrowRight />
           </button> */}
-        <button className="bg-red-500 p-4 rounded-full">
+        <button className="bg-indigo-600 hover:bg-indigo-700 p-4 rounded-full">
           <FaArrowLeft />
         </button>
-        <button className="bg-red-500 p-4 rounded-full">
+        <button className="bg-indigo-600 hover:bg-indigo-700  p-4 rounded-full">
           <FaArrowRight />
         </button>
       </div>
