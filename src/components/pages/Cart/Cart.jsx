@@ -6,26 +6,41 @@ import { AiOutlineClose, AiOutlineMinus } from "react-icons/ai";
 import { MdOutlineAddShoppingCart } from "react-icons/md";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
+import Footer from "../Footer";
+import { useContext } from "react";
+import { CartContext } from "../../../Context/CartContext";
 
-function Cart({ addToCart, handleIncrease, handleDecrease }) {
+function Cart() {
+  const saving = 25;
+  const storePickup = 12;
+  const {
+    addToCart,
+    handleIncrease,
+    handleDecrease,
+    handleRemove,
+    handleTotal,
+  } = useContext(CartContext);
+
+  // Destructure
   return (
     <>
       <PageNav />
       <section className="bg-gray-50 py-8 antialiased  md:py-16">
         <div className="mx-auto max-w-screen-xl px-4 2xl:px-0">
-          <h2 className="text-xl font-semibold text-gray-900  sm:text-2xl">
-            Shopping Cart
-          </h2>
-          <h2 className="text-xl font-semibold text-gray-900  sm:text-2xl text-right">
-            3 Items
-          </h2>
-
+          <div className="flex items-center justify-between flex-wrap">
+            <h2 className="text-xl font-semibold text-gray-900  sm:text-2xl">
+              Shopping Cart
+            </h2>
+            <h2 className="text-xl font-semibold text-gray-900  sm:text-2xl ">
+              {addToCart.length} Items
+            </h2>
+          </div>
           <div className="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
             <div className="mx-auto w-full flex-none lg:max-w-2xl xl:max-w-4xl">
               <div className="space-y-6">
-                {addToCart.map((cartItems, index) => (
+                {addToCart.map((cartItems) => (
                   <div
-                    key={index}
+                    key={cartItems.id}
                     className="rounded-lg border border-gray-200 bg-gray-100 text-black p-4 shadow-sm md:p-6"
                   >
                     <div className="space-y-4 md:flex md:items-center md:justify-between md:gap-6 md:space-y-0 text-black">
@@ -91,6 +106,7 @@ function Cart({ addToCart, handleIncrease, handleDecrease }) {
                         </div>
                         <div className="flex items-center gap-4">
                           <button
+                            onClick={() => handleRemove(cartItems.id)}
                             type="button"
                             className="inline-flex items-center text-md font-medium text-indigo-500 hover:underline hover:text-indigo-600 "
                           >
@@ -163,7 +179,7 @@ function Cart({ addToCart, handleIncrease, handleDecrease }) {
                         Original price
                       </dt>
                       <dd className="text-base font-medium text-gray-900 ">
-                        $7,592.00
+                        ${handleTotal().toFixed(2)}
                       </dd>
                     </dl>
 
@@ -172,7 +188,7 @@ function Cart({ addToCart, handleIncrease, handleDecrease }) {
                         Savings
                       </dt>
                       <dd className="text-base font-medium text-green-700">
-                        -$299.00
+                        -${saving}
                       </dd>
                     </dl>
 
@@ -181,16 +197,7 @@ function Cart({ addToCart, handleIncrease, handleDecrease }) {
                         Store Pickup
                       </dt>
                       <dd className="text-base font-medium text-gray-900 ">
-                        $99
-                      </dd>
-                    </dl>
-
-                    <dl className="flex items-center justify-between gap-4">
-                      <dt className="text-base font-normal text-gray-600 ">
-                        Tax
-                      </dt>
-                      <dd className="text-base font-medium text-gray-900 ">
-                        $799
+                        ${storePickup}
                       </dd>
                     </dl>
                   </div>
@@ -200,31 +207,31 @@ function Cart({ addToCart, handleIncrease, handleDecrease }) {
                       Total
                     </dt>
                     <dd className="text-base font-bold text-gray-900 ">
-                      $8,191.00
+                      ${handleTotal().toFixed(2)}
                     </dd>
                   </dl>
                 </div>
 
-                <a
-                  href="#"
+                <Link
+                  to="#"
                   className="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 bg-primary-600 hover:bg-primary-700 border border-gray-400 bg-indigo-600 hover:bg-transparent hover:text-black"
                 >
                   Proceed to Checkout
-                </a>
+                </Link>
 
                 <div className="flex items-center justify-center gap-2">
                   <span className="text-sm font-normal text-gray-600 ">
                     {" "}
                     or{" "}
                   </span>
-                  <a
-                    href="#"
+                  <Link
+                    to="/product"
                     title=""
                     className="inline-flex items-center gap-2 text-sm font-medium text-primary-700 underline hover:no-underline dark:text-primary-500"
                   >
                     Continue Shopping
                     <FaArrowRightLong />
-                  </a>
+                  </Link>
                 </div>
               </div>
 
@@ -257,6 +264,7 @@ function Cart({ addToCart, handleIncrease, handleDecrease }) {
           </div>
         </div>
       </section>
+      <Footer />
     </>
   );
 }

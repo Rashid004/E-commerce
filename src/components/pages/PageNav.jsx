@@ -6,11 +6,14 @@ import { CiLogin } from "react-icons/ci";
 
 import { IoClose } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { CartContext } from "../../Context/CartContext";
 
 function pageNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
+
+  const { addToCart } = useContext(CartContext);
 
   const handleToggle = (e) => {
     e.preventDefault();
@@ -46,7 +49,7 @@ function pageNav() {
         <div className="flex items-center">
           <img src="/images/Logo.png" alt="Logo" className="h-6 mr-4" />
         </div>
-        <ul className="hidden md:flex space-x-8 flex-1 justify-center text-lg sm:text-[20px] font-semibold">
+        <ul className="hidden md:flex space-x-8 flex-1 justify-center text-xl sm:text-[20px] font-semibold">
           <li>
             <NavLink to="/" className="text-black hover:text-indigo-900  ">
               Home
@@ -82,7 +85,7 @@ function pageNav() {
         </ul>
         <div className="hidden md:flex items-center space-x-5 text-lg ">
           <NavLink to="/login ">
-            <div className="flex items-center justify-center border bg-gray-200 px-2 py-1 rounded-full">
+            <div className="flex items-center justify-center border bg-gray-200 px-2 py-1 rounded-lg">
               <h3 className="text-xl font-semibold">Login</h3>
               <CiLogin
                 size="1.1em"
@@ -91,9 +94,12 @@ function pageNav() {
             </div>
           </NavLink>
           <NavLink to="/cart">
+            <span className="bg-indigo-900 text-white font-medium rounded-full h-7 w-7 z-10 absolute text-center translate-x-6">
+              {addToCart.length}
+            </span>
             <AiOutlineShopping
-              className="hover:text-indigo-900 cursor-pointer"
-              size="2.1em"
+              className="hover:text-indigo-900 cursor-pointer relative"
+              size="2.5em"
             />
           </NavLink>
         </div>
@@ -160,7 +166,7 @@ function pageNav() {
           </ul>
           <div className="flex justify-center space-x-4 text-lg py-4 font-semibold">
             <NavLink to="/login ">
-              <div className="flex items-center justify-center border bg-gray-200 px-1 py-1 rounded-full">
+              <div className="flex items-center justify-center border bg-gray-200 px-1 py-1 rounded-md">
                 <h3 className="text-sm font-semibold">Login</h3>
                 <CiLogin
                   size="1em"

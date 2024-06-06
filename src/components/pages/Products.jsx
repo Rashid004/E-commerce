@@ -1,21 +1,24 @@
 /** @format */
 
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Footer from "./Footer";
 import PageNav from "./PageNav";
 import { FaRegStarHalfStroke } from "react-icons/fa6";
 import { FaStar } from "react-icons/fa";
 
 import axios from "axios";
+import { CartContext } from "../../Context/CartContext";
+import { ProdcutContext } from "../../Context/ProductContext";
 
-function Products({ handleAddToCart }) {
+function Products() {
   const [allCategories, setAllCategories] = useState([]);
-  const [products, setProducts] = useState([]);
-  const [error, setError] = useState(null);
-  const [selectProduct, setSelectProduct] = useState(null);
+
+  // Context
+  const { handleAddToCart } = useContext(CartContext);
+  const { products, setSelectProduct, setError, error } =
+    useContext(ProdcutContext);
 
   // Get Product Catogries from APi
-
   useEffect(() => {
     const getProductsCatogrie = async () => {
       try {
@@ -28,41 +31,14 @@ function Products({ handleAddToCart }) {
       }
     };
     getProductsCatogrie();
-  }, []);
-
-  // Get Products From Api
-
-  useEffect(() => {
-    const getProducts = async () => {
-      try {
-        if (selectProduct) {
-          const res = await axios.get(
-            `https://dummyjson.com/products/category/${selectProduct}`
-          );
-          console.log("Products response:", res.data.products);
-          setProducts(res.data.products);
-        } else {
-          const res = await axios.get(
-            "https://dummyjson.com/products/category/sports-accessories"
-          );
-          console.log("Products response:", res.data.products);
-          setProducts(res.data.products);
-        }
-      } catch (err) {
-        setError("Failed to fetch products.");
-      }
-    };
-    getProducts();
-  }, [selectProduct]);
+  }, [setError]);
 
   if (error) {
     return <div>Error: {error}</div>;
   }
 
   const handleFilterProduct = (categorySlug) => {
-    console.log("Selected category:", categorySlug);
     setSelectProduct(categorySlug);
-    console.log(products);
   };
 
   return (
