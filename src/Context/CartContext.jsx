@@ -1,11 +1,16 @@
 /** @format */
 
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
+import { auth } from "../Firebase/FirebaseAuth";
 
 export const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
   const [addToCart, setAddToCart] = useState([]);
+  const [discount, setDiscount] = useState("");
+  const [promocode, setPromocode] = useState("");
+  const [invalid, setInvalid] = useState("Invalid promocode");
+  const [userName, setUserName] = useState("");
 
   // Add product to the Cart
   const handleAddToCart = (product) => {
@@ -54,8 +59,37 @@ const CartProvider = ({ children }) => {
     const totalPrice = addToCart.reduce((total, acc) => {
       return total + acc.price * acc.quantity;
     }, 0);
-    return totalPrice;
+    return totalPrice - discount;
   };
+
+  // Apply promo code
+  const appyPromoCode = () => {
+    if (promocode === "DISCOUNT10") {
+      setDiscount(handleTotal() * 0.1);
+      setPromocode("");
+      setInvalid("");
+    } else {
+      setInvalid(invalid);
+    }
+  };
+
+  // Clear Cart
+  const handleClear = () => {
+    setAddToCart([]);
+  };
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUserName(user.displayName || "User");
+      } else {
+        setUserName("");
+      }
+    });
+
+    // Cleanup subscription on unmount
+    return () => unsubscribe();
+  }, []);
   return (
     <CartContext.Provider
       value={{
@@ -65,6 +99,11 @@ const CartProvider = ({ children }) => {
         handleDecrease,
         handleRemove,
         handleTotal,
+        appyPromoCode,
+        promocode,
+        setPromocode,
+        handleClear,
+        userName,
       }}
     >
       {children}

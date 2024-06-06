@@ -7,6 +7,8 @@ export const ProdcutContext = createContext();
 
 function ProductProvider({ children }) {
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+
   const [selectProduct, setSelectProduct] = useState(null);
   const [error, setError] = useState(null);
 
@@ -18,14 +20,14 @@ function ProductProvider({ children }) {
           const res = await axios.get(
             `https://dummyjson.com/products/category/${selectProduct}`
           );
-          console.log("Products response:", res.data.products);
           setProducts(res.data.products);
+          setOriginalProducts(res.data.products);
         } else {
           const res = await axios.get(
             "https://dummyjson.com/products/category/sports-accessories"
           );
-          console.log("Products response:", res.data.products);
           setProducts(res.data.products);
+          setFilteredProducts(res.data.products);
         }
       } catch (err) {
         setError("Failed to fetch products.");
@@ -42,6 +44,8 @@ function ProductProvider({ children }) {
         setSelectProduct,
         setError,
         error,
+        setFilteredProducts,
+        filteredProducts,
       }}
     >
       {children}

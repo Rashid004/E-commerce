@@ -19,6 +19,11 @@ function Cart() {
     handleDecrease,
     handleRemove,
     handleTotal,
+    appyPromoCode,
+    promocode,
+    setPromocode,
+    // handleAddToCart,
+    handleClear,
   } = useContext(CartContext);
 
   // Destructure
@@ -118,53 +123,73 @@ function Cart() {
                     </div>
                   </div>
                 ))}
+                {addToCart.length > 0 ? (
+                  <button
+                    onClick={handleClear}
+                    className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 rounded-md text-white text-center"
+                  >
+                    Clear All
+                  </button>
+                ) : (
+                  <div className="mx-auto text-2xl text-indigo-950 font-medium">
+                    {" "}
+                    Your cart 🪹 is empty Go to the shopping page🛒
+                  </div>
+                )}
               </div>
-              <div className="hidden xl:mt-8 md:block">
+              {/* <div className="hidden xl:mt-8 md:block">
                 <h3 className="text-2xl font-semibold text-gray-900 ">
                   People also bought
                 </h3>
-                <div className="mt-6 grid grid-cols-3 gap-4 sm:mt-8">
-                  <div className="space-y-6 overflow-hidden rounded-lg border text-black p-6 shadow-sm border-gray-700 bg-gray-100">
-                    <a href="#" className="overflow-hidden rounded">
-                      <img
-                        className="mx-auto h-44 w-44"
-                        src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-front.svg"
-                        alt="imac image"
-                      />
-                    </a>
-                    <div>
-                      <Link
-                        to="#"
-                        className="text-lg font-semibold leading-tight text-gray-900 hover:underline"
-                      >
-                        iMac 27”
+                {/* <div className="mt-6 grid grid-cols-3 gap-4 sm:mt-8 ">
+                  {addToCart.map((fewItem) => (
+                    <div
+                      className="space-y-6 overflow-hidden rounded-lg border text-black p-6 shadow-sm border-gray-700 bg-gray-100"
+                      key={fewItem.id}
+                    >
+                      <Link to="#" className="overflow-hidden rounded">
+                        <img
+                          className="mx-auto h-44 w-44"
+                          src={fewItem.thumbnail}
+                          alt={fewItem.title}
+                        />
                       </Link>
-                      <p className="mt-2 text-base font-normal text-gray-500 ">
-                        This generation has some improvements, including a
-                        longer continuous battery life.
-                      </p>
+                      <div>
+                        <Link
+                          to="#"
+                          className="text-lg font-semibold leading-tight text-gray-900 hover:underline"
+                        >
+                          {fewItem.title}
+                        </Link>
+                        <p className="mt-2 text-base font-normal text-gray-500 ">
+                          {fewItem.description}
+                        </p>
+                      </div>
+                      <div>
+                        <p className="text-lg font-bold text-gray-900 ">
+                          <span className="line-through">
+                            ${fewItem.discountPercentage}
+                          </span>
+                        </p>
+                        <p className="text-lg font-bold leading-tight text-gray-900 ">
+                          ${fewItem.price}
+                        </p>
+                      </div>
+                      <div className="mt-6 flex items-center gap-2.5">
+                        <button
+                          onClick={() => handleAddToCart(fewItem)}
+                          type="button"
+                          className="inline-flex w-full items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium  text-white  focus:outline-none focus:ring-4 focus:ring-primary-300  focus:ring-primary-800 bg-indigo-600 hover:bg-transparent transition-all hover:text-black border border-blue-200"
+                        >
+                          <MdOutlineAddShoppingCart />
+                          Add to cart
+                        </button>
+                      </div>
                     </div>
-                    <div>
-                      <p className="text-lg font-bold text-gray-900 ">
-                        <span className="line-through"> $399,99 </span>
-                      </p>
-                      <p className="text-lg font-bold leading-tight text-gray-900 ">
-                        $299
-                      </p>
-                    </div>
-                    <div className="mt-6 flex items-center gap-2.5">
-                      <button
-                        type="button"
-                        className="inline-flex w-full items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium  text-white  focus:outline-none focus:ring-4 focus:ring-primary-300  focus:ring-primary-800 bg-indigo-600 hover:bg-transparent transition-all hover:text-black border border-blue-200"
-                      >
-                        <MdOutlineAddShoppingCart />
-                        Add to cart
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                  ))}
+                </div> */}
             </div>
+            {/* </div> */}
 
             <div className="mx-auto mt-6 max-w-4xl flex-1 space-y-6 lg:mt-0 lg:w-full">
               <div className="space-y-4 rounded-lg border border-gray-200 bg-gray-100 p-4 shadow-sm sm:p-6">
@@ -249,10 +274,22 @@ function Cart() {
                       id="voucher"
                       className="block w-full rounded-lg border  p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 border-gray-600 bg-gray-200 placeholder:text-gray-400 "
                       placeholder=""
+                      value={promocode}
+                      onChange={(e) => setPromocode(e.target.value)}
                       required
                     />
+                    {promocode && promocode !== "DISCOUNT10" ? (
+                      <span className="text-red-600 font-medium">
+                        invalid code
+                      </span>
+                    ) : (
+                      <span className="text-sm font-medium text-gray-700">
+                        USE DISCOUNT10
+                      </span>
+                    )}
                   </div>
                   <button
+                    onClick={appyPromoCode}
                     type="submit"
                     className="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 bg-indigo-600 hover:bg-indigo-700 "
                   >

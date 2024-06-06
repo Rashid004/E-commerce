@@ -12,11 +12,19 @@ import { ProdcutContext } from "../../Context/ProductContext";
 
 function Products() {
   const [allCategories, setAllCategories] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   // Context
   const { handleAddToCart } = useContext(CartContext);
-  const { products, setSelectProduct, setError, error } =
-    useContext(ProdcutContext);
+  const {
+    products,
+    setProducts,
+    setSelectProduct,
+    setError,
+    error,
+    filteredProducts,
+    setFilteredProducts,
+  } = useContext(ProdcutContext);
 
   // Get Product Catogries from APi
   useEffect(() => {
@@ -39,6 +47,20 @@ function Products() {
 
   const handleFilterProduct = (categorySlug) => {
     setSelectProduct(categorySlug);
+    const filteredByCategory = products.filter(
+      (item) => item.category === categorySlug
+    );
+    setFilteredProducts(filteredByCategory);
+  };
+
+  const handleSearchFilter = () => {
+    console.log(searchQuery);
+
+    const filterProduct = filteredProducts.filter((item) =>
+      item.title.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+    console.log(filterProduct);
+    setProducts(filterProduct);
   };
 
   return (
@@ -57,9 +79,14 @@ function Products() {
               className="px-4 py-2 border-none outline-none"
               type="search"
               placeholder="Search"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
             />
 
-            <button className="bg-indigo-500 hover:bg-indigo-600 px-4 py-2 text-white font-medium">
+            <button
+              onClick={handleSearchFilter}
+              className="bg-indigo-500 hover:bg-indigo-600 px-4 py-2 text-white font-medium"
+            >
               Search
             </button>
           </div>
@@ -94,9 +121,9 @@ function Products() {
             ))}
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-11/12 mx-auto">
-          {products.map((item, index) => (
+          {products.map((item) => (
             <div
-              key={index}
+              key={item.id}
               className="bg-gray-200 px-4 pt-4 pb-4 sm:px-5 sm:py-5 md:px-6 md:py-5 lg:px-7 lg:py-6 rounded-lg h-auto"
             >
               <img
