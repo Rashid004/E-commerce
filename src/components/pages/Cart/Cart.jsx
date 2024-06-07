@@ -232,7 +232,10 @@ function Cart() {
                       Total
                     </dt>
                     <dd className="text-base font-bold text-gray-900 ">
-                      ${handleTotal().toFixed(2)}
+                      $
+                      {handleTotal().toFixed(2) >= 25
+                        ? Number(handleTotal().toFixed(2) - 12).toFixed(1)
+                        : handleTotal().toFixed(2)}
                     </dd>
                   </dl>
                 </div>

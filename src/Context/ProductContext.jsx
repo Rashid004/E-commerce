@@ -21,11 +21,10 @@ function ProductProvider({ children }) {
             `https://dummyjson.com/products/category/${selectProduct}`
           );
           setProducts(res.data.products);
-          setOriginalProducts(res.data.products);
+          setFilteredProducts(res.data.products);
         } else {
-          const res = await axios.get(
-            "https://dummyjson.com/products/category/sports-accessories"
-          );
+          const res = await axios.get("https://dummyjson.com/products");
+          console.log(res.data.products);
           setProducts(res.data.products);
           setFilteredProducts(res.data.products);
         }
@@ -35,6 +34,22 @@ function ProductProvider({ children }) {
     };
     getProducts();
   }, [selectProduct]);
+
+  // Get AllProducts From Api
+  // useEffect(() => {
+  //   const getAllProducts = async () => {
+  //     try {
+  //       const res = await axios.get("https://dummyjson.com/products");
+  //       console.log(res.data.products);
+
+  //       setAllProducts(res.data.products);
+  //     } catch (err) {
+  //       setError("Failed to fetch products.");
+  //     }
+  //   };
+  //   getAllProducts();
+  // }, []);
+
   return (
     <ProdcutContext.Provider
       value={{

@@ -12,6 +12,7 @@ import SignUp from "./components/pages/SignUp/SignUp";
 import CartProvider from "./Context/CartContext";
 import ProductProvider from "./Context/ProductContext";
 import { Toaster } from "react-hot-toast";
+import SingleProducts from "./SingleProductPage/SingleProducts";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
               <Route path="about" element={<About />} />
               <Route path="contact" element={<Contact />} />
               <Route path="cart" element={<Cart />} />
+              <Route path="singleProduct/:id" element={<SingleProducts />} />
               <Route path="login" element={<Login />} />
               <Route path="signup" element={<SignUp />} />
             </Routes>

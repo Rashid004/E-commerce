@@ -2,7 +2,6 @@
 
 import { Link, useNavigate } from "react-router-dom";
 import { FaCartShopping } from "react-icons/fa6";
-import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../../Firebase/FirebaseAuth";
@@ -33,7 +32,7 @@ function Login() {
     } else {
       signInWithEmailAndPassword(auth, userSignIn.email, userSignIn.password)
         .then(async (res) => {
-          navigate("/");
+          navigate("/home");
         })
         .catch((err) => toast.error(err.message));
     }
