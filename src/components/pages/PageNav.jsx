@@ -1,6 +1,6 @@
 /** @format */
 
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineShopping } from "react-icons/ai";
 import { CiLogin } from "react-icons/ci";
 
@@ -8,11 +8,14 @@ import { IoClose } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../../Context/CartContext";
+import { signOut } from "firebase/auth";
+import { auth } from "../../Firebase/FirebaseAuth";
+import toast from "react-hot-toast";
 
 function pageNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
-
+  const navigate = useNavigate();
   const { addToCart, userName } = useContext(CartContext);
 
   const handleToggle = (e) => {
@@ -37,6 +40,12 @@ function pageNav() {
 
   const isLinkActive = (path) => {
     return location.pathname === path;
+  };
+
+  const logOut = () => {
+    signOut(auth);
+    toast.success("Successfully sign out");
+    navigate("/signup");
   };
 
   return (
@@ -65,7 +74,11 @@ function pageNav() {
           <NavLink to="/login">
             <div className="flex items-center justify-center border bg-gray-200 px-2 py-1 rounded-lg">
               <h3 className="text-sm md:text-xl lg:text-lg font-semibold">
-                {userName ? <button>SignOut</button> : <button>Login</button>}
+                {userName ? (
+                  <button onClick={() => logOut()}>SignOut</button>
+                ) : (
+                  <button onClick={() => navigate("/login")}>Login</button>
+                )}
               </h3>
               <CiLogin
                 size="1.1em"

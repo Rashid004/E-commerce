@@ -1,7 +1,6 @@
 /** @format */
 
 import { Link } from "react-router-dom";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa6";
 
 const HeroSection = () => {
   return (
@@ -39,14 +38,6 @@ const HeroSection = () => {
             alt="Woman enjoying Shopping"
           />
         </div>
-      </div>
-      <div className="flex items-center justify-center gap-2 text-white mx-2 mt-4 md:mt-2 md:justify-normal">
-        <button className="bg-red-500 p-4 rounded-full">
-          <FaArrowLeft />
-        </button>
-        <button className="bg-red-500 p-4 rounded-full">
-          <FaArrowRight />
-        </button>
       </div>
     </div>
   );

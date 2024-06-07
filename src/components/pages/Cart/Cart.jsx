@@ -3,7 +3,6 @@ import PageNav from "../PageNav";
 import { FiPlus } from "react-icons/fi";
 
 import { AiOutlineClose, AiOutlineMinus } from "react-icons/ai";
-import { MdOutlineAddShoppingCart } from "react-icons/md";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import Footer from "../Footer";
@@ -132,8 +131,10 @@ function Cart() {
                   </button>
                 ) : (
                   <div className="mx-auto text-2xl text-indigo-950 font-medium">
-                    {" "}
                     Your cart 🪹 is empty Go to the shopping page🛒
+                    <Link to="/product" className="text-indigo-500 underline">
+                      Go to Cart
+                    </Link>
                   </div>
                 )}
               </div>

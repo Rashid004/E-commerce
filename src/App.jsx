@@ -39,7 +39,7 @@ function App() {
                 },
                 success: {
                   style: {
-                    background: "green",
+                    background: "white",
                   },
                 },
               }}
