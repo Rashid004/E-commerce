@@ -7,8 +7,8 @@ import Products from "./components/pages/Products";
 import About from "./components/pages/About";
 import Contact from "./components/pages/Contact";
 import Cart from "./components/pages/Cart/Cart";
-import Login from "./components/pages/Login/Login";
-import SignUp from "./components/pages/SignUp/SignUp";
+import Login from "../src/components/Authentication/Login/Login";
+import SignUp from "../src/components/Authentication/SignUp/SignUp";
 import CartProvider from "./Context/CartContext";
 import ProductProvider from "./Context/ProductContext";
 import { Toaster } from "react-hot-toast";
@@ -34,7 +34,7 @@ function App() {
             <Toaster
               toastOptions={{
                 style: {
-                  width: "250px",
+                  width: "300px",
                   height: "55px",
                 },
                 success: {

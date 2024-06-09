@@ -47,7 +47,11 @@ function Products() {
   }, [setError]);
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return (
+      <div className="bg-white shadow-md rounded-md mx-auto text-xl text-red-600 font-medium">
+        Error: {error}
+      </div>
+    );
   }
 
   // Filter Product in option
@@ -97,83 +101,85 @@ function Products() {
             <div className="mx-auto w-12 h-1 bg-gray-800 rounded-sm mt-2 "></div>
           </h2>
         </div>
-        <div className="mt-24 mb-6 flex items-center justify-evenly">
-          <div className="border border-gray-200 flex items-center">
+        <div className="bg-gray-200 rounded-md ">
+          <div className="mt-24 mb-6 flex items-center justify-evenly pt-3">
+            <div className="border border-gray-200 flex items-center">
+              <input
+                className="px-4 py-2 border-none outline-none"
+                type="search"
+                placeholder="Search"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+              />
+
+              <button
+                onClick={handleSearchFilter}
+                className="bg-indigo-500 hover:bg-indigo-600 px-4 py-2 text-white font-medium"
+              >
+                Search
+              </button>
+            </div>
+          </div>
+          <div className=" border-gray-200 flex items-center flex-col md:flex-row justify-center gap-2 mb-3 pb-3">
             <input
-              className="px-4 py-2 border-none outline-none"
-              type="search"
-              placeholder="Search"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              type="number"
+              name="min"
+              className="px-4 py-2 border border-gray-300  outline-none"
+              placeholder="Min value"
+              value={minPrice}
+              onChange={(e) => setMinPrice(e.target.value)}
+            />
+            <input
+              type="number"
+              name="max"
+              className="px-4 py-2 border border-gray-300  outline-none"
+              placeholder="Max value"
+              value={maxPrice}
+              onChange={(e) => setMaxPrice(e.target.value)}
             />
 
             <button
-              onClick={handleSearchFilter}
+              onClick={handlePriceFilter}
               className="bg-indigo-500 hover:bg-indigo-600 px-4 py-2 text-white font-medium"
             >
-              Search
+              Filter by price
             </button>
           </div>
-        </div>
-        <div className=" border-gray-200 flex items-center flex-col md:flex-row justify-center gap-2 mb-3">
-          <input
-            type="number"
-            name="min"
-            className="px-4 py-2 border border-gray-300  outline-none"
-            placeholder="Min value"
-            value={minPrice}
-            onChange={(e) => setMinPrice(e.target.value)}
-          />
-          <input
-            type="number"
-            name="max"
-            className="px-4 py-2 border border-gray-300  outline-none"
-            placeholder="Max value"
-            value={maxPrice}
-            onChange={(e) => setMaxPrice(e.target.value)}
-          />
+          <div className="flex items-center justify-center flex-wrap gap-3 mb-20 pb-3">
+            <select
+              className="px-2 py-1 text-sm font-medium border border-gray-300"
+              onChange={(e) => handleFilterProduct(e.target.value)}
+            >
+              <option>Filter by Catogery</option>
 
-          <button
-            onClick={handlePriceFilter}
-            className="bg-indigo-500 hover:bg-indigo-600 px-4 py-2 text-white font-medium"
-          >
-            Filter by price
-          </button>
-        </div>
-        <div className="flex items-center justify-center flex-wrap gap-3 mb-20">
-          <select
-            className="px-2 py-1 text-sm font-medium border border-gray-300"
-            onChange={(e) => handleFilterProduct(e.target.value)}
-          >
-            <option>Filter by Catogery</option>
-
-            {allCategories
-              .filter(
-                (filterItem) =>
-                  ![
-                    "womens-watches",
-                    "womens-shoes",
-                    "womens-jewellery",
-                    "womens-dresses",
-                    "vehicle",
-                    "sunglasses",
-                    "motorcycle",
-                    "kitchen-accessories",
-                    "groceries",
-                    "furniture",
-                    "mobile-accessories",
-                  ].includes(filterItem.slug)
-              )
-              .map((allCatogrie, index) => (
-                <option
-                  key={index}
-                  className="px-1 py-1"
-                  value={allCatogrie.slug}
-                >
-                  {allCatogrie.name}
-                </option>
-              ))}
-          </select>
+              {allCategories
+                .filter(
+                  (filterItem) =>
+                    ![
+                      "womens-watches",
+                      "womens-shoes",
+                      "womens-jewellery",
+                      "womens-dresses",
+                      "vehicle",
+                      "sunglasses",
+                      "motorcycle",
+                      "kitchen-accessories",
+                      "groceries",
+                      "furniture",
+                      "mobile-accessories",
+                    ].includes(filterItem.slug)
+                )
+                .map((allCatogrie, index) => (
+                  <option
+                    key={index}
+                    className="px-1 py-1"
+                    value={allCatogrie.slug}
+                  >
+                    {allCatogrie.name}
+                  </option>
+                ))}
+            </select>
+          </div>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-11/12 mx-auto">
           {products.map((item) => (

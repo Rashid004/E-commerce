@@ -1,6 +1,6 @@
 /** @format */
 
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineShopping } from "react-icons/ai";
 import { CiLogin } from "react-icons/ci";
 
@@ -54,9 +54,11 @@ function pageNav() {
         isSticky ? "fixed top-0 shadow-sm" : "relative"
       }`}
     >
-      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+      <div className="container mx-auto  px-6 py-4 flex justify-between items-center">
         <div className="flex items-center">
-          <img src="/images/Logo.png" alt="Logo" className="h-6 mr-4" />
+          <Link to="/">
+            <img src="/images/Logo.png" alt="Logo" className="h-6 mr-4" />
+          </Link>
         </div>
         <ul className="hidden md:flex space-x-8 flex-1 justify-center text-xl sm:text-[20px] font-semibold">
           {["/home", "/about", "/product", "/contact"].map((path) => (
@@ -101,14 +103,14 @@ function pageNav() {
         </div>
         <button onClick={handleToggle} className="md:hidden flex items-center">
           {isMenuOpen ? (
-            <IoClose className="w-6 h-6" />
+            <IoClose className="w-8 h-8" />
           ) : (
-            <RxHamburgerMenu className="w-6 h-6" />
+            <RxHamburgerMenu className="w-8 h-8" />
           )}
         </button>
       </div>
       {isMenuOpen && (
-        <div className="md:hidden bg-white shadow-md">
+        <div className="md:hidden bg-white shadow-md transition-all ease-in-out duration-200">
           <ul className="space-y-2 px-4 pb-4 text-center font-medium">
             {["/home", "/about", "/product", "/contact"].map((path) => (
               <li key={path}>

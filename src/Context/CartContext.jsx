@@ -2,6 +2,7 @@
 
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../Firebase/FirebaseAuth";
+import toast from "react-hot-toast";
 
 export const CartContext = createContext();
 
@@ -17,6 +18,7 @@ const CartProvider = ({ children }) => {
     const isExistProduct = addToCart.find(
       (findItem) => findItem.id === product.id
     );
+    toast.success("Product added to cart");
 
     if (isExistProduct) {
       const updateCart = addToCart.map((item) =>

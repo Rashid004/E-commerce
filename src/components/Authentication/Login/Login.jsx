@@ -25,7 +25,7 @@ function Login() {
     setUserSignIn({ ...userSignIn, [e.target.name]: e.target.value });
   };
 
-  // SingUp Email password
+  // Singin Email password
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!userSignIn.email || !userSignIn.password) {
@@ -33,6 +33,7 @@ function Login() {
     } else {
       signInWithEmailAndPassword(auth, userSignIn.email, userSignIn.password)
         .then(async (res) => {
+          toast.success("Sign in Successfully");
           navigate("/home");
         })
         .catch((err) => toast.error(err.message));
