@@ -54,13 +54,17 @@ function pageNav() {
         isSticky ? "fixed top-0 shadow-sm" : "relative"
       }`}
     >
-      <div className="container mx-auto  px-6 py-4 flex justify-between items-center">
-        <div className="flex items-center">
+      <div className="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div className="flex items-center ">
           <Link to="/">
             <img src="/images/Logo.png" alt="Logo" className="h-6 mr-4" />
           </Link>
         </div>
-        <ul className="hidden md:flex space-x-8 flex-1 justify-center text-xl sm:text-[20px] font-semibold">
+        <ul
+          className={`hidden md:flex space-x-8 flex-1 justify-center text-xl sm:text-lg font-semibold ${
+            isMenuOpen ? "hidden" : "block"
+          }`}
+        >
           {["/home", "/about", "/product", "/contact"].map((path) => (
             <li key={path}>
               <NavLink to={path} className="text-black hover:text-indigo-900">
@@ -74,7 +78,7 @@ function pageNav() {
         </ul>
         <div className="flex items-center space-x-5 text-lg">
           <NavLink to="/login">
-            <div className="flex items-center justify-center border bg-gray-200 px-2 py-1 rounded-lg">
+            <div className="flex items-center justify-center border bg-gray-200 px-2 py-1 rounded-lg md:ml-4">
               <h3 className="text-sm md:text-xl lg:text-lg font-semibold">
                 {userName ? (
                   <button onClick={() => logOut()}>SignOut</button>

@@ -178,19 +178,13 @@ function Cart() {
                         Total
                       </dt>
                       <dd className="text-base font-bold text-gray-900 ">
-                        $
-                        {handleTotal().toFixed(2) >= 25
-                          ? Number(handleTotal().toFixed(2) - 12).toFixed(1)
-                          : handleTotal().toFixed(2)}
+                        ${handleTotal().toFixed(2)}
                       </dd>
                     </dl>
                   </div>
 
-                  <Link
-                    to="#"
-                    className="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 bg-primary-600 hover:bg-primary-700 border border-gray-400 bg-indigo-600 hover:bg-transparent hover:text-black"
-                  >
-                    Proceed to Checkout
+                  <Link to="#">
+                    <ModalForm />
                   </Link>
 
                   <div className="flex items-center justify-center gap-2">
@@ -233,12 +227,18 @@ function Cart() {
                         </span>
                       ) : (
                         <span className="text-sm font-medium text-gray-700">
-                          USE DISCOUNT10
+                          {promocode === "DISCOUNT10"
+                            ? "Successfully apply"
+                            : "USE DISCOUNT10"}
                         </span>
                       )}
                     </div>
-
-                    <ModalForm />
+                    <button
+                      onClick={appyPromoCode}
+                      className="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 bg-indigo-600 hover:bg-indigo-700 "
+                    >
+                      Apply now
+                    </button>
                   </form>
                 </div>
               </div>

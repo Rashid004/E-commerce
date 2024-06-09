@@ -10,6 +10,7 @@ import axios from "axios";
 import { CartContext } from "../../Context/CartContext";
 import { ProdcutContext } from "../../Context/ProductContext";
 import { Link, useNavigate } from "react-router-dom";
+import Shimmar from "../../ShimmarEffect/Shimmar";
 
 function Products() {
   const [allCategories, setAllCategories] = useState([]);
@@ -37,7 +38,6 @@ function Products() {
       try {
         const res = await axios("https://dummyjson.com/products/categories");
 
-        console.log("Categories response:", res);
         setAllCategories(res.data);
       } catch (err) {
         setError("Failed to fetch categories.");
@@ -105,7 +105,7 @@ function Products() {
           <div className="mt-24 mb-6 flex items-center justify-evenly pt-3">
             <div className="border border-gray-200 flex items-center">
               <input
-                className="px-4 py-2 border-none outline-none"
+                className="px-4 py-2 border-none outline-none rounded-sm"
                 type="search"
                 placeholder="Search"
                 value={searchQuery}
@@ -114,17 +114,17 @@ function Products() {
 
               <button
                 onClick={handleSearchFilter}
-                className="bg-indigo-500 hover:bg-indigo-600 px-4 py-2 text-white font-medium"
+                className="bg-indigo-500 focus:ring-indigo-500 focus:border-indigo-500 hover:bg-indigo-600 px-4 py-2 text-white font-medium rounded-sm"
               >
                 Search
               </button>
             </div>
           </div>
-          <div className=" border-gray-200 flex items-center flex-col md:flex-row justify-center gap-2 mb-3 pb-3">
+          <div className=" border-gray-200 flex items-center flex-col md:flex-row justify-center gap-2 mb-3 pb-3 sm:flex-col">
             <input
               type="number"
               name="min"
-              className="px-4 py-2 border border-gray-300  outline-none"
+              className="px-4 py-2 border border-gray-300  outline-none rounded-sm focus:ring-indigo-500 focus:border-indigo-500"
               placeholder="Min value"
               value={minPrice}
               onChange={(e) => setMinPrice(e.target.value)}
@@ -132,7 +132,7 @@ function Products() {
             <input
               type="number"
               name="max"
-              className="px-4 py-2 border border-gray-300  outline-none"
+              className="px-4 py-2 border border-gray-300  outline-none rounded-sm focus:ring-indigo-500 focus:border-indigo-500"
               placeholder="Max value"
               value={maxPrice}
               onChange={(e) => setMaxPrice(e.target.value)}
@@ -140,14 +140,14 @@ function Products() {
 
             <button
               onClick={handlePriceFilter}
-              className="bg-indigo-500 hover:bg-indigo-600 px-4 py-2 text-white font-medium"
+              className="bg-indigo-500 hover:bg-indigo-600 px-4 py-2 text-white font-medium rounded-sm"
             >
               Filter by price
             </button>
           </div>
           <div className="flex items-center justify-center flex-wrap gap-3 mb-20 pb-3">
             <select
-              className="px-2 py-1 text-sm font-medium border border-gray-300"
+              className="px-2 py-1 text-sm font-medium border border-gray-300 rounded-sm"
               onChange={(e) => handleFilterProduct(e.target.value)}
             >
               <option>Filter by Catogery</option>
@@ -181,53 +181,57 @@ function Products() {
             </select>
           </div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-11/12 mx-auto">
-          {products.map((item) => (
-            <div
-              key={item.id}
-              className="bg-gray-200 px-4 pt-4 pb-4 sm:px-5 sm:py-5 md:px-6 md:py-5 lg:px-7 lg:py-6 rounded-lg h-auto"
-            >
-              <Link
-                className="overflow-hidden"
-                to={`/singleProduct/${item.id}`}
+        {!products.length ? (
+          <Shimmar />
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-11/12 mx-auto">
+            {products.map((item) => (
+              <div
+                key={item.id}
+                className="bg-gray-200 px-4 pt-4 pb-4 sm:px-5 sm:py-5 md:px-6 md:py-5 lg:px-7 lg:py-6 rounded-lg h-auto"
               >
-                <img
-                  className="max-w-full max-h-[250px] object-contain object-center block hover:scale-110 transition-transform duration-300"
-                  src={item.thumbnail}
-                  alt="Product"
-                />
-              </Link>
-              <div className="flex items-center justify-between mt-4 mx-2">
-                <h2 className="font-semibold text-lg">{item.title}</h2>
-                <p className="font-semibold text-lg">${item.price}</p>
-              </div>
-              <p className="font-medium text-sm text-gray-600 ml-2 flex items-center gap-1">
-                Rating:{item.rating}
-                <FaStar />
-                <FaRegStarHalfStroke />
-              </p>
-
-              <p className="text-sm text-gray-500 pt-2 ml-2">
-                {item.description.slice(0, 110)}
-              </p>
-
-              <div className="flex flex-col  sm:justify-center lg:justify-between items-center sm:mt-2 gap-2 mt-4">
-                <button
-                  onClick={() => handleAddToCart(item)}
-                  className="bg-indigo-600  border border-blue-200 text-white px-4 py-2 w-full  hover:bg-transparent hover:text-black transition-colors duration-300 font-medium rounded-md"
+                <Link
+                  className="overflow-hidden"
+                  to={`/singleProduct/${item.id}`}
                 >
-                  Add to cart
-                </button>
-                <button
-                  onClick={() => navigate(`/singleProduct/${item.id}`)}
-                  className="bg-indigo-600 border border-blue-200 text-white px-4 py-2 w-full  hover:bg-transparent hover:text-black transition-colors duration-300 font-medium rounded-md"
-                >
-                  Buy now
-                </button>
+                  <img
+                    className="max-w-full max-h-[250px] object-contain object-center block hover:scale-110 transition-transform duration-300"
+                    src={item.thumbnail}
+                    alt="Product"
+                  />
+                </Link>
+                <div className="flex items-center justify-between mt-4 mx-2">
+                  <h2 className="font-semibold text-lg">{item.title}</h2>
+                  <p className="font-semibold text-lg">${item.price}</p>
+                </div>
+                <p className="font-medium text-sm text-gray-600 ml-2 flex items-center gap-1">
+                  Rating:{item.rating}
+                  <FaStar />
+                  <FaRegStarHalfStroke />
+                </p>
+
+                <p className="text-sm text-gray-500 pt-2 ml-2">
+                  {item.description.slice(0, 110)}
+                </p>
+
+                <div className="flex flex-col  sm:justify-center lg:justify-between items-center sm:mt-2 gap-2 mt-4">
+                  <button
+                    onClick={() => handleAddToCart(item)}
+                    className="bg-indigo-600  border border-blue-200 text-white px-4 py-2 w-full  hover:bg-transparent hover:text-black transition-colors duration-300 font-medium rounded-md"
+                  >
+                    Add to cart
+                  </button>
+                  <button
+                    onClick={() => navigate(`/singleProduct/${item.id}`)}
+                    className="bg-indigo-600 border border-blue-200 text-white px-4 py-2 w-full  hover:bg-transparent hover:text-black transition-colors duration-300 font-medium rounded-md"
+                  >
+                    Buy now
+                  </button>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
       <Footer />
     </>

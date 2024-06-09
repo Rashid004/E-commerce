@@ -20,46 +20,46 @@ function Contact() {
   };
 
   // SignUp with email,password username
-  const handleContactSubmit = async (e) => {
-    e.preventDefault();
+  // const handleContactSubmit = async (e) => {
+  //   e.preventDefault();
 
-    try {
-      // Validate the requiindigo fields
-      if (
-        !userContact.firstName ||
-        !userContact.lastName ||
-        !userContact.email ||
-        !userContact.msg
-      ) {
-        return toast.error("All fields are requiindigo");
-      }
+  //   try {
+  //     // Validate the requiindigo fields
+  //     if (
+  //       !userContact.firstName ||
+  //       !userContact.lastName ||
+  //       !userContact.email ||
+  //       !userContact.msg
+  //     ) {
+  //       return toast.error("All fields are requiindigo");
+  //     }
 
-      // Add the document to the "ContactUser" collection in Firestore
-      await addDoc(collection(db, "ContactUser"), {
-        firstName: userContact.firstName,
-        lastName: userContact.lastName,
-        email: userContact.email,
-        message: userContact.msg,
-      });
+  //     // Add the document to the "ContactUser" collection in Firestore
+  //     await addDoc(collection(db, "ContactUser"), {
+  //       firstName: userContact.firstName,
+  //       lastName: userContact.lastName,
+  //       email: userContact.email,
+  //       message: userContact.msg,
+  //     });
 
-      // Display success message
-      toast.success(
-        `Form Submitted Successfully Thank you ${userContact.firstName}`
-      );
+  //     // Display success message
+  //     toast.success(
+  //       `Form Submitted Successfully Thank you ${userContact.firstName}`
+  //     );
 
-      // Reset the form fields
-      setUserContact({
-        firstName: "",
-        lastName: "",
-        email: "",
-        password: "", // Assuming password is also a part of userContact object
-        msg: "",
-      });
-    } catch (err) {
-      // Display error message
-      toast.error(err.message);
-    }
-  };
+  //     // Reset the form fields
+  //     setUserContact({
+  //       firstName: "",
+  //       lastName: "",
+  //       email: "",
+  //       password: "", // Assuming password is also a part of userContact object
+  //       msg: "",
+  //     });
+  //   } catch (err) {
+  //     // Display error message
+  //     toast.error(err.message);
+  //   }
+  // };
 
   return (
     <>
@@ -89,7 +89,11 @@ function Contact() {
           </div>
         </div>
 
-        <form action="submit" className="bg-gray-50 mt-10 max-w-6xl mx-auto">
+        <form
+          action="https://getform.io/f/ebpdgoyb"
+          method="POST"
+          className="bg-gray-50 mt-10 max-w-6xl mx-auto"
+        >
           <div className="flex items-center flex-col justify-center gap-4  py-6">
             <input
               className="block w-2/3 md:w-1/3 lg:h-1/4 py-2 md:py-4 px-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 "
@@ -130,7 +134,7 @@ function Contact() {
             />
             <div className="flex items-center justify-between">
               <button
-                onClick={handleContactSubmit}
+                // onClick={handleContactSubmit}
                 type="submit"
                 className="bg-indigo-500 text-white font-medium py-3 px-6 rounded focus:outline-none focus:shadow-outline hover:bg-indigo-700"
               >

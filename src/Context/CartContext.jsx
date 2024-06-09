@@ -13,6 +13,31 @@ const CartProvider = ({ children }) => {
   const [invalid, setInvalid] = useState("Invalid promocode");
   const [userName, setUserName] = useState("");
 
+  // Load cart items from local storage when component mounts
+  useEffect(() => {
+    const savedCartItems = localStorage.getItem("cartItems");
+    if (savedCartItems) {
+      setAddToCart(JSON.parse(savedCartItems));
+    } else {
+      setAddToCart(savedCartItems);
+    }
+
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUserName(user.displayName || "User");
+      } else {
+        setUserName("");
+      }
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  // Save cart items to local storage
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(addToCart));
+  }, [addToCart]);
+
   // Add product to the Cart
   const handleAddToCart = (product) => {
     const isExistProduct = addToCart.find(
@@ -28,7 +53,7 @@ const CartProvider = ({ children }) => {
     } else {
       setAddToCart([...addToCart, { ...product, quantity: 1 }]);
     }
-    console.log(addToCart);
+    console.log("Cart after adding product:", addToCart);
   };
 
   // Increase Quantity
@@ -39,6 +64,7 @@ const CartProvider = ({ children }) => {
 
     setAddToCart(incQuantity);
   };
+
   // Decrease Quantity
   const handleDecrease = (id) => {
     const decQuantity = addToCart.map((item) =>
@@ -80,18 +106,6 @@ const CartProvider = ({ children }) => {
     setAddToCart([]);
   };
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        setUserName(user.displayName || "User");
-      } else {
-        setUserName("");
-      }
-    });
-
-    // Cleanup subscription on unmount
-    return () => unsubscribe();
-  }, []);
   return (
     <CartContext.Provider
       value={{

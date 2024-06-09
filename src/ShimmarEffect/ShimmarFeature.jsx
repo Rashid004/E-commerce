@@ -1,7 +1,7 @@
 /** @format */
 
-function Shimmar() {
-  const arrayData = new Array(30).fill("");
+function ShimmarFeature() {
+  const arrayData = new Array(4).fill("");
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-11/12 mx-auto">
       {arrayData.map((el, i) => (
@@ -28,4 +28,4 @@ function Shimmar() {
   );
 }
 
-export default Shimmar;
+export default ShimmarFeature;

@@ -2,9 +2,11 @@
 
 "use client";
 
+import { addDoc, collection } from "firebase/firestore";
 import { Button, Label, Modal, TextInput } from "flowbite-react";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { db } from "../Firebase/FirebaseAuth";
 
 export function ModalForm() {
   const [openModal, setOpenModal] = useState(false);
@@ -23,18 +25,57 @@ export function ModalForm() {
     setOrderDetails({ ...orderDetails, [e.target.name]: e.target.value });
   };
 
-  const handleOrder = (e) => {
+  // const handleOrder = (e) => {
+  //   e.preventDefault();
+  //   if (
+  //     !orderDetails.fullName ||
+  //     !orderDetails.address ||
+  //     !orderDetails.pinCode ||
+  //     !orderDetails.mobile
+  //   ) {
+  //     return toast.error("All fields are required");
+  //   } else {
+  //     toast.success(`Order Successfull ${orderDetails.fullName}`);
+  //     onCloseModal();
+  //   }
+  // };
+  const handleOrder = async (e) => {
     e.preventDefault();
-    if (
-      !orderDetails.fullName ||
-      !orderDetails.address ||
-      !orderDetails.pinCode ||
-      !orderDetails.mobile
-    ) {
-      return toast.error("All fields are required");
-    } else {
-      toast.success("Order Successfull");
-      onCloseModal();
+
+    try {
+      // Validate the requiindigo fields
+      if (
+        !orderDetails.fullName ||
+        !orderDetails.address ||
+        !orderDetails.pinCode ||
+        !orderDetails.mobile
+      ) {
+        return toast.error("All fields are requiindigo");
+      }
+
+      // Add the document to the "ContactUser" collection in Firestore
+      await addDoc(collection(db, "ContactUser"), {
+        FullName: orderDetails.fullName,
+        Address: orderDetails.address,
+        PinCode: orderDetails.pinCode,
+        Mobile: orderDetails.mobile,
+      });
+
+      // Display success message
+      toast.success(
+        `Form Submitted Successfully Thank you ${orderDetails.fullName}`
+      );
+
+      // Reset the form fields
+      setOrderDetails({
+        fullName: "",
+        address: "",
+        pinCode: "",
+        mobile: "",
+      });
+    } catch (err) {
+      // Display error message
+      toast.error(err.message);
     }
   };
 
@@ -42,9 +83,9 @@ export function ModalForm() {
     <>
       <Button
         onClick={() => setOpenModal(true)}
-        className="flex w-full items-center justify-center rounded-lg bg-primary-700 px-4 py-1 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 bg-indigo-600 hover:bg-indigo-700 "
+        className="flex w-full items-center justify-center rounded-lg mt-4 px-4 py-0 text-sm font-medium text-white  bg-indigo-600 hover:bg-indigo-700 "
       >
-        Toggle modal
+        Proceed to Checkout
       </Button>
       <Modal show={openModal} size="md" onClose={onCloseModal} popup>
         <Modal.Header />
@@ -63,6 +104,7 @@ export function ModalForm() {
                 value={orderDetails.fullName}
                 onChange={handleChange}
                 required
+                autoComplete="off"
               />
             </div>
             <div>
@@ -75,6 +117,7 @@ export function ModalForm() {
                 value={orderDetails.address}
                 onChange={handleChange}
                 required
+                autoComplete="off"
               />
             </div>
             <div>
@@ -88,6 +131,7 @@ export function ModalForm() {
                 onChange={handleChange}
                 type="number"
                 required
+                autoComplete="off"
               />
             </div>
             <div>
@@ -101,6 +145,7 @@ export function ModalForm() {
                 onChange={handleChange}
                 type="number"
                 required
+                autoComplete="off"
               />
             </div>
 

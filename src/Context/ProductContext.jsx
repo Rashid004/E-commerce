@@ -24,7 +24,6 @@ function ProductProvider({ children }) {
           setFilteredProducts(res.data.products);
         } else {
           const res = await axios.get("https://dummyjson.com/products");
-          console.log(res.data.products);
           setProducts(res.data.products);
           setFilteredProducts(res.data.products);
         }
@@ -34,21 +33,6 @@ function ProductProvider({ children }) {
     };
     getProducts();
   }, [selectProduct]);
-
-  // Get AllProducts From Api
-  // useEffect(() => {
-  //   const getAllProducts = async () => {
-  //     try {
-  //       const res = await axios.get("https://dummyjson.com/products");
-  //       console.log(res.data.products);
-
-  //       setAllProducts(res.data.products);
-  //     } catch (err) {
-  //       setError("Failed to fetch products.");
-  //     }
-  //   };
-  //   getAllProducts();
-  // }, []);
 
   return (
     <ProdcutContext.Provider
