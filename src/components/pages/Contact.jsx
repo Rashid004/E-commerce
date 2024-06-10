@@ -3,9 +3,6 @@
 import { useState } from "react";
 import Footer from "./Footer";
 import PageNav from "./PageNav";
-import toast from "react-hot-toast";
-import { addDoc, collection } from "firebase/firestore";
-import { db } from "../../Firebase/FirebaseAuth";
 
 function Contact() {
   const [userContact, setUserContact] = useState({
@@ -18,48 +15,6 @@ function Contact() {
   const handleContact = (e) => {
     setUserContact({ ...userContact, [e.target.name]: e.target.value });
   };
-
-  // SignUp with email,password username
-  // const handleContactSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     // Validate the requiindigo fields
-  //     if (
-  //       !userContact.firstName ||
-  //       !userContact.lastName ||
-  //       !userContact.email ||
-  //       !userContact.msg
-  //     ) {
-  //       return toast.error("All fields are requiindigo");
-  //     }
-
-  //     // Add the document to the "ContactUser" collection in Firestore
-  //     await addDoc(collection(db, "ContactUser"), {
-  //       firstName: userContact.firstName,
-  //       lastName: userContact.lastName,
-  //       email: userContact.email,
-  //       message: userContact.msg,
-  //     });
-
-  //     // Display success message
-  //     toast.success(
-  //       `Form Submitted Successfully Thank you ${userContact.firstName}`
-  //     );
-
-  //     // Reset the form fields
-  //     setUserContact({
-  //       firstName: "",
-  //       lastName: "",
-  //       email: "",
-  //       password: "", // Assuming password is also a part of userContact object
-  //       msg: "",
-  //     });
-  //   } catch (err) {
-  //     // Display error message
-  //     toast.error(err.message);
-  //   }
-  // };
 
   return (
     <>

@@ -33,6 +33,7 @@ const Cart = lazy(() => import("./SingleProductPage/SingleProducts"));
 const PageNotFound = lazy(() => import("./components/pages/PageNotFound"));
 
 import SpinnerFullPage from "./components/pages/Home/SpinnerFullPage";
+
 function App() {
   return (
     <>
