@@ -4,7 +4,7 @@ import axios from "axios";
 import { useContext, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { CartContext } from "../../../Context/CartContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ShimmarFeature from "../../../ShimmarEffect/ShimmarFeature";
 import gsap from "gsap";
 
@@ -65,7 +65,7 @@ function ProductFeature() {
           <div className="mx-auto w-12 h-1 bg-red-600 rounded-sm mt-2 "></div>
         </h2>
       </div>
-      {!popularProduct.length ? (
+      {popularProduct && !popularProduct.length ? (
         <ShimmarFeature />
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-11/12 mx-auto">
@@ -75,11 +75,13 @@ function ProductFeature() {
               key={productItem.id}
               className="bg-gray-200 focus:border-gray-200 focus:ring-1 px-4 pt-4 pb-4 sm:px-5 sm:py-5 md:px-6 md:py-5 lg:px-7 lg:py-6 rounded-lg"
             >
-              <img
-                className="w-full hover:scale-110 transition-transform duration-300"
-                src={productItem.thumbnail}
-                alt="Product"
-              />
+              <Link to={`/singleProduct/${productItem.id}`}>
+                <img
+                  className="w-full hover:scale-110 transition-transform duration-300"
+                  src={productItem.thumbnail}
+                  alt="Product"
+                />
+              </Link>
               <div className="flex items-center justify-between mt-4 mx-2">
                 <h2 className="font-semibold text-lg">{productItem.title}</h2>
                 <p className="font-semibold text-lg">${productItem.price}</p>
