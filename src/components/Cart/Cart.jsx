@@ -1,15 +1,16 @@
 /** @format */
-import PageNav from "../pages/PageNav";
 import { FiPlus } from "react-icons/fi";
 
 import { AiOutlineClose, AiOutlineMinus } from "react-icons/ai";
 import { FaArrowRightLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
-import Footer from "../pages/Footer";
 import { useContext } from "react";
 import { CartContext } from "../../Context/CartContext";
-import Empty from "../pages/Empty";
 import { ModalForm } from "../../ModalSection/ModalForm";
+
+import Footer from "../pages/Footer";
+import Empty from "../pages/Empty";
+import PageNav from "../pages/PageNav";
 
 function Cart() {
   const saving = 25;
