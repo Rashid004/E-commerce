@@ -25,20 +25,6 @@ export function ModalForm() {
     setOrderDetails({ ...orderDetails, [e.target.name]: e.target.value });
   };
 
-  // const handleOrder = (e) => {
-  //   e.preventDefault();
-  //   if (
-  //     !orderDetails.fullName ||
-  //     !orderDetails.address ||
-  //     !orderDetails.pinCode ||
-  //     !orderDetails.mobile
-  //   ) {
-  //     return toast.error("All fields are required");
-  //   } else {
-  //     toast.success(`Order Successfull ${orderDetails.fullName}`);
-  //     onCloseModal();
-  //   }
-  // };
   const handleOrder = async (e) => {
     e.preventDefault();
 
