@@ -131,7 +131,7 @@ function PageNav() {
           </NavLink>
           <NavLink to="/cart">
             <span className="bg-indigo-900 text-white font-medium rounded-full h-7 w-7 z-10 absolute text-center translate-x-6">
-              {addToCart && addToCart.length}
+              {addToCart.length}
             </span>
             <AiOutlineShopping
               className="hover:text-indigo-900 cursor-pointer relative"
