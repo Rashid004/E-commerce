@@ -8,7 +8,7 @@ import { FaStar } from "react-icons/fa";
 
 import axios from "axios";
 import { CartContext } from "../../Context/CartContext";
-import { ProdcutContext } from "../../Context/ProductContext";
+import { ProductContext } from "../../Context/ProductContext";
 import { Link, useNavigate } from "react-router-dom";
 import Shimmar from "../../ShimmarEffect/Shimmar";
 
@@ -30,7 +30,7 @@ function Products() {
     error,
     filteredProducts,
     setFilteredProducts,
-  } = useContext(ProdcutContext);
+  } = useContext(ProductContext);
 
   // Get Product Catogries from APi
   useEffect(() => {

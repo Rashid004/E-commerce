@@ -3,7 +3,6 @@
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineShopping } from "react-icons/ai";
 import { CiLogin } from "react-icons/ci";
-
 import { IoClose } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useContext, useEffect, useRef, useState } from "react";
@@ -12,15 +11,17 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../Firebase/FirebaseAuth";
 import toast from "react-hot-toast";
 import gsap from "gsap";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
-function pageNav() {
+gsap.registerPlugin(ScrollTrigger);
+
+function PageNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
 
   const navigate = useNavigate();
   const { addToCart, userName } = useContext(CartContext);
 
-  // Animation part using gsap /////
   const navRefs = useRef([]);
   navRefs.current = [];
 
@@ -30,12 +31,11 @@ function pageNav() {
     }
   };
 
-  ///////////
-
   const handleToggle = (e) => {
     e.preventDefault();
     setIsMenuOpen(!isMenuOpen);
   };
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
@@ -58,7 +58,7 @@ function pageNav() {
 
   const logOut = () => {
     signOut(auth);
-    toast.success("Successfully sign out");
+    toast.success("Successfully signed out");
     navigate("/signup");
   };
 
@@ -94,17 +94,15 @@ function pageNav() {
             isMenuOpen ? "hidden" : "block"
           }`}
         >
-          {["/home", "/about", "/product", "/contact"].map((path, index) => (
+          {["/home", "/about", "/product", "/contact"].map((path) => (
             <li key={path}>
-              <NavLink
-                ref={addToRefs}
-                to={path}
-                className="text-black hover:text-indigo-900"
-              >
-                {path.slice(1).charAt(0).toUpperCase() + path.slice(2)}
-                {isLinkActive(path) && (
-                  <div className="font-bold w-full h-[3px] mt-1 bg-gray-900"></div>
-                )}
+              <NavLink to={path} className="text-black hover:text-indigo-900">
+                <span ref={addToRefs}>
+                  {path.slice(1).charAt(0).toUpperCase() + path.slice(2)}
+                  {isLinkActive(path) && (
+                    <div className="font-bold w-full h-[3px] mt-1 bg-gray-900"></div>
+                  )}
+                </span>
               </NavLink>
             </li>
           ))}
@@ -123,19 +121,15 @@ function pageNav() {
                 )}
               </h3>
               <CiLogin
-                ref={addToRefs}
                 size="1.1em"
                 className="hover:text-indigo-900 cursor-pointer"
               />
-              <span
-                ref={addToRefs}
-                className="font-semibold capitalize text-xl pl-2 "
-              >
+              <span className="font-semibold capitalize text-xl pl-2 ">
                 {userName}
               </span>
             </div>
           </NavLink>
-          <NavLink to="/cart" ref={addToRefs}>
+          <NavLink to="/cart">
             <span className="bg-indigo-900 text-white font-medium rounded-full h-7 w-7 z-10 absolute text-center translate-x-6">
               {addToCart.length}
             </span>
@@ -163,10 +157,12 @@ function pageNav() {
                   className="text-black hover:text-indigo-900 block text-xl pt-4"
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {path.slice(1).charAt(0).toUpperCase() + path.slice(2)}
-                  {isLinkActive(path) && (
-                    <div className="mx-auto font-bold w-7 h-[3px] mt-1 bg-gray-900"></div>
-                  )}
+                  <span ref={addToRefs}>
+                    {path.slice(1).charAt(0).toUpperCase() + path.slice(2)}
+                    {isLinkActive(path) && (
+                      <div className="mx-auto font-bold w-7 h-[3px] mt-1 bg-gray-900"></div>
+                    )}
+                  </span>
                 </NavLink>
               </li>
             ))}
@@ -177,4 +173,4 @@ function pageNav() {
   );
 }
 
-export default pageNav;
+export default PageNav;

@@ -18,8 +18,6 @@ const CartProvider = ({ children }) => {
     const savedCartItems = localStorage.getItem("cartItems");
     if (savedCartItems) {
       setAddToCart(JSON.parse(savedCartItems));
-    } else {
-      setAddToCart(savedCartItems);
     }
 
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -53,7 +51,6 @@ const CartProvider = ({ children }) => {
     } else {
       setAddToCart([...addToCart, { ...product, quantity: 1 }]);
     }
-    console.log("Cart after adding product:", addToCart);
   };
 
   // Increase Quantity

@@ -93,10 +93,7 @@ function Cart() {
                           </div>
                           <div className="text-end md:order-4 md:w-32">
                             <p className="text-base font-bold text-gray-900 ">
-                              $
-                              {Number(
-                                cartItems.price * cartItems.quantity
-                              ).toFixed(2)}
+                              ${cartItems.price * cartItems.quantity.toFixed(2)}
                             </p>
                           </div>
                         </div>

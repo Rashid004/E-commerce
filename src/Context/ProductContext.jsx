@@ -3,7 +3,7 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
 
-export const ProdcutContext = createContext();
+export const ProductContext = createContext();
 
 function ProductProvider({ children }) {
   const [products, setProducts] = useState([]);
@@ -35,7 +35,7 @@ function ProductProvider({ children }) {
   }, [selectProduct]);
 
   return (
-    <ProdcutContext.Provider
+    <ProductContext.Provider
       value={{
         products,
         setProducts,
@@ -48,7 +48,7 @@ function ProductProvider({ children }) {
       }}
     >
       {children}
-    </ProdcutContext.Provider>
+    </ProductContext.Provider>
   );
 }
 

@@ -41,8 +41,8 @@ function ProductFeature() {
           delay: index * 0.1,
           scrollTrigger: {
             trigger: ref,
-            start: "top 50%",
-            end: "bottom 40%",
+            start: "top 90%",
+            end: "bottom 50%",
             scrub: 1,
             toggleActions: "play none none none",
           },
