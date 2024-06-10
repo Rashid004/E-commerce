@@ -6,17 +6,31 @@ import { CiLogin } from "react-icons/ci";
 
 import { IoClose } from "react-icons/io5";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { CartContext } from "../../Context/CartContext";
 import { signOut } from "firebase/auth";
 import { auth } from "../../Firebase/FirebaseAuth";
 import toast from "react-hot-toast";
+import gsap from "gsap";
 
 function pageNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
+
   const navigate = useNavigate();
   const { addToCart, userName } = useContext(CartContext);
+
+  // Animation part using gsap /////
+  const navRefs = useRef([]);
+  navRefs.current = [];
+
+  const addToRefs = (el) => {
+    if (el && !navRefs.current.includes(el)) {
+      navRefs.current.push(el);
+    }
+  };
+
+  ///////////
 
   const handleToggle = (e) => {
     e.preventDefault();
@@ -48,6 +62,16 @@ function pageNav() {
     navigate("/signup");
   };
 
+  useEffect(() => {
+    navRefs.current.forEach((ref, index) => {
+      gsap.fromTo(
+        ref,
+        { opacity: 0, y: -100 },
+        { opacity: 1, y: 0, duration: 2, delay: index * 0.2 }
+      );
+    });
+  }, []);
+
   return (
     <nav
       className={`w-full py-4 z-10 transition-all duration-300 bg-gray-50 ${
@@ -57,7 +81,12 @@ function pageNav() {
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
         <div className="flex items-center ">
           <Link to="/">
-            <img src="/images/Logo.png" alt="Logo" className="h-6 mr-4" />
+            <img
+              ref={addToRefs}
+              src="/images/Logo.png"
+              alt="Logo"
+              className="h-6 mr-4"
+            />
           </Link>
         </div>
         <ul
@@ -65,9 +94,13 @@ function pageNav() {
             isMenuOpen ? "hidden" : "block"
           }`}
         >
-          {["/home", "/about", "/product", "/contact"].map((path) => (
+          {["/home", "/about", "/product", "/contact"].map((path, index) => (
             <li key={path}>
-              <NavLink to={path} className="text-black hover:text-indigo-900">
+              <NavLink
+                ref={addToRefs}
+                to={path}
+                className="text-black hover:text-indigo-900"
+              >
                 {path.slice(1).charAt(0).toUpperCase() + path.slice(2)}
                 {isLinkActive(path) && (
                   <div className="font-bold w-full h-[3px] mt-1 bg-gray-900"></div>
@@ -78,7 +111,10 @@ function pageNav() {
         </ul>
         <div className="flex items-center space-x-5 text-lg">
           <NavLink to="/login">
-            <div className="flex items-center justify-center border bg-gray-200 px-2 py-1 rounded-lg md:ml-4">
+            <div
+              ref={addToRefs}
+              className="flex items-center justify-center border bg-gray-200 px-2 py-1 rounded-lg md:ml-4"
+            >
               <h3 className="text-sm md:text-xl lg:text-lg font-semibold">
                 {userName ? (
                   <button onClick={() => logOut()}>SignOut</button>
@@ -87,15 +123,19 @@ function pageNav() {
                 )}
               </h3>
               <CiLogin
+                ref={addToRefs}
                 size="1.1em"
                 className="hover:text-indigo-900 cursor-pointer"
               />
-              <span className="font-semibold capitalize text-xl pl-2 ">
+              <span
+                ref={addToRefs}
+                className="font-semibold capitalize text-xl pl-2 "
+              >
                 {userName}
               </span>
             </div>
           </NavLink>
-          <NavLink to="/cart">
+          <NavLink to="/cart" ref={addToRefs}>
             <span className="bg-indigo-900 text-white font-medium rounded-full h-7 w-7 z-10 absolute text-center translate-x-6">
               {addToCart.length}
             </span>

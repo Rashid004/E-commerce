@@ -1,15 +1,17 @@
 /** @format */
 
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { CartContext } from "../../../Context/CartContext";
 import { useNavigate } from "react-router-dom";
 import ShimmarFeature from "../../../ShimmarEffect/ShimmarFeature";
+import gsap from "gsap";
 
 function ProductFeature() {
   const [popularProduct, setPopularProduct] = useState([]);
   const navigate = useNavigate();
+  const productRefs = useRef([]);
   const { handleAddToCart } = useContext(CartContext);
   useEffect(() => {
     const getFeatureProduct = async () => {
@@ -23,6 +25,37 @@ function ProductFeature() {
     };
     getFeatureProduct();
   }, []);
+
+  useEffect(() => {
+    productRefs.current.forEach((ref, index) => {
+      gsap.fromTo(
+        ref,
+        {
+          opacity: 0,
+          y: 100,
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          delay: index * 0.1,
+          scrollTrigger: {
+            trigger: ref,
+            start: "top 50%",
+            end: "bottom 40%",
+            scrub: 1,
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    });
+  }, [popularProduct]);
+
+  const addToRefs = (el) => {
+    if (el && !productRefs.current.includes(el)) {
+      productRefs.current.push(el);
+    }
+  };
 
   return (
     <div className="mx-auto mt-20 sm:mt-4 md:mt-2 pb-24 h-full max-w-6xl">
@@ -38,6 +71,7 @@ function ProductFeature() {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-11/12 mx-auto">
           {popularProduct.map((productItem) => (
             <div
+              ref={addToRefs}
               key={productItem.id}
               className="bg-gray-200 focus:border-gray-200 focus:ring-1 px-4 pt-4 pb-4 sm:px-5 sm:py-5 md:px-6 md:py-5 lg:px-7 lg:py-6 rounded-lg"
             >
