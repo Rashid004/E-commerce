@@ -12,7 +12,6 @@ function Home() {
     <div>
       <PageNav />
       <HeroSection />
-      {/* <ServiceSection /> */}
       <ProductFeature />
       <Subscribe />
       <Company />
