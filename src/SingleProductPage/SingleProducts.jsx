@@ -17,8 +17,6 @@ function SingleProducts() {
 
   const { handleAddToCart } = useContext(CartContext);
 
-  console.log(id);
-
   useEffect(() => {
     const getSingleProduct = async () => {
       try {
