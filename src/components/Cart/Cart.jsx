@@ -41,7 +41,7 @@ function Cart() {
               {addToCart.length} Items
             </h2>
           </div>
-          {addToCart.length < 0 ? (
+          {addToCart && !addToCart.length ? (
             <Empty />
           ) : (
             <div className="mt-6 sm:mt-8 md:gap-6 lg:flex lg:items-start xl:gap-8">
