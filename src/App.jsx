@@ -4,17 +4,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import { Toaster } from "react-hot-toast";
 
-// import Home from "./components/pages/Home";
-// import Products from "./components/pages/Products";
-// import About from "./components/pages/About";
-// import Contact from "./components/pages/Contact";
-// import Login from "../src/components/Authentication/Login/Login";
-// import SignUp from "../src/components/Authentication/SignUp/SignUp";
-// import CartProvider from "./Context/CartContext";
-// import ProductProvider from "./Context/ProductContext";
-// import SingleProducts from "./SingleProductPage/SingleProducts";
-// import Cart from "./components/Cart/Cart";
-
 const Home = lazy(() => import("./components/pages/Home"));
 const Products = lazy(() => import("./components/pages/Products"));
 const About = lazy(() => import("./components/pages/About"));
