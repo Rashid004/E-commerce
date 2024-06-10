@@ -17,7 +17,7 @@ const SignUp = lazy(() =>
 const CartProvider = lazy(() => import("./Context/CartContext"));
 const ProductProvider = lazy(() => import("./Context/ProductContext"));
 const SingleProducts = lazy(() => import("./SingleProductPage/SingleProducts"));
-const Cart = lazy(() => import("./SingleProductPage/SingleProducts"));
+const Cart = lazy(() => import("./components/Cart/Cart"));
 
 const PageNotFound = lazy(() => import("./components/pages/PageNotFound"));
 

@@ -23,7 +23,7 @@ function Cart() {
     appyPromoCode,
     promocode,
     setPromocode,
-    // handleAddToCart,
+    handleAddToCart,
     handleClear,
   } = useContext(CartContext);
 
