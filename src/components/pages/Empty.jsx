@@ -16,7 +16,7 @@ function Empty() {
           to="/product"
           className="inline-block px-6 py-3 text-lg md:text-xl bg-indigo-500 text-white rounded-md transition duration-300 hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50"
         >
-          Go to Cart
+          Go to Shopping
         </Link>
       </div>
     </div>

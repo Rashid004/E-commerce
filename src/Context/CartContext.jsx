@@ -39,7 +39,6 @@ const CartProvider = ({ children }) => {
   // Add product to the Cart
   const handleAddToCart = (product) => {
     if (!addToCart.length) {
-      console.log(addToCart.length);
       setAddToCart([...addToCart, { ...product, quantity: 1 }]);
       return;
     }
