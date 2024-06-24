@@ -21,7 +21,7 @@ function Cart() {
     handleDecrease,
     handleRemove,
     handleTotal,
-    appyPromoCode,
+    applyPromoCode,
     promocode,
     setPromocode,
     handleClear,
@@ -231,7 +231,7 @@ function Cart() {
                       )}
                     </div>
                     <button
-                      onClick={appyPromoCode}
+                      onClick={applyPromoCode}
                       className="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 bg-indigo-600 hover:bg-indigo-700 "
                     >
                       Apply now

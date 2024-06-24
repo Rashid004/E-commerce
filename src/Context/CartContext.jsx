@@ -10,7 +10,7 @@ const CartProvider = ({ children }) => {
   const [addToCart, setAddToCart] = useState([]);
   const [discount, setDiscount] = useState("");
   const [promocode, setPromocode] = useState("");
-  const [invalid, setInvalid] = useState("Invalid promocode");
+  const [invalidPromocode, setInvalidPromocode] = useState("Invalid promocode");
   const [userName, setUserName] = useState("");
 
   // Load cart items from local storage when component mounts
@@ -83,25 +83,24 @@ const CartProvider = ({ children }) => {
     setAddToCart(removeItem);
   };
 
-  // Handle Total amount
+  // Calculate Total Amount
   const handleTotal = () => {
-    const totalPrice = addToCart.reduce((total, acc) => {
-      return total + acc.price * acc.quantity;
+    const totalPrice = addToCart.reduce((total, item) => {
+      return total + item.price * item.quantity;
     }, 0);
-    return totalPrice - discount;
+    return totalPrice - discount; // Subtract discount from total
   };
 
-  // Apply promo code
-  const appyPromoCode = () => {
+  // Apply Promo Code
+  const applyPromoCode = () => {
     if (promocode === "DISCOUNT10") {
-      setDiscount(handleTotal() * 0.1);
-      setPromocode("");
-      setInvalid("");
+      setDiscount(handleTotal() * 0.1); // Apply 10% discount
+      setInvalidPromocode(false); // Reset invalid promo code message
     } else {
-      setInvalid(invalid);
+      setInvalidPromocode(true); // Set invalid promo code message
     }
+    setPromocode(""); // Clear promo code input
   };
-
   // Clear Cart
   const handleClear = () => {
     setAddToCart([]);
@@ -116,7 +115,7 @@ const CartProvider = ({ children }) => {
         handleDecrease,
         handleRemove,
         handleTotal,
-        appyPromoCode,
+        applyPromoCode,
         promocode,
         setPromocode,
         handleClear,
