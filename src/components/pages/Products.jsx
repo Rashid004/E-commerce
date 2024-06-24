@@ -201,7 +201,9 @@ function Products() {
                   />
                 </Link>
                 <div className="flex items-center justify-between mt-4 mx-2">
-                  <h2 className="font-semibold text-lg">{item.title}</h2>
+                  <h2 className="font-semibold text-lg">
+                    {item.title.slice(0, 16)}
+                  </h2>
                   <p className="font-semibold text-lg">${item.price}</p>
                 </div>
                 <p className="font-medium text-sm text-gray-600 ml-2 flex items-center gap-1">

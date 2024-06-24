@@ -73,7 +73,7 @@ function ProductFeature() {
             <div
               ref={addToRefs}
               key={productItem.id}
-              className="bg-gray-200 focus:border-gray-200 focus:ring-1 px-4 pt-4 pb-4 sm:px-5 sm:py-5 md:px-6 md:py-5 lg:px-7 lg:py-6 rounded-lg"
+              className=" bg-gray-200 focus:border-gray-200 focus:ring-1 px-4 pt-4 pb-4 sm:px-5 sm:py-5 md:px-6 md:py-5 lg:px-7 lg:py-6 rounded-lg"
             >
               <Link to={`/singleProduct/${productItem.id}`}>
                 <img
@@ -83,7 +83,9 @@ function ProductFeature() {
                 />
               </Link>
               <div className="flex items-center justify-between mt-4 mx-2">
-                <h2 className="font-semibold text-lg">{productItem.title}</h2>
+                <h2 className="font-semibold text-lg">
+                  {productItem.title.slice(0, 18)}
+                </h2>
                 <p className="font-semibold text-lg">${productItem.price}</p>
               </div>
               <div className="flex flex-col  sm:justify-center lg:justify-between items-center sm:mt-2 gap-2 mt-4">

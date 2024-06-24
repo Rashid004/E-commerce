@@ -4,9 +4,11 @@
 
 import { addDoc, collection } from "firebase/firestore";
 import { Button, Label, Modal, TextInput } from "flowbite-react";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { db } from "../Firebase/FirebaseAuth";
+import { CartContext } from "../Context/CartContext";
+import { Link } from "react-router-dom";
 
 export function ModalForm() {
   const [openModal, setOpenModal] = useState(false);
@@ -16,6 +18,8 @@ export function ModalForm() {
     pinCode: "",
     mobile: "",
   });
+
+  const { userName } = useContext(CartContext);
   function onCloseModal() {
     setOpenModal(false);
     setOrderDetails("");
@@ -73,76 +77,92 @@ export function ModalForm() {
       >
         Proceed to Checkout
       </Button>
-      <Modal show={openModal} size="md" onClose={onCloseModal} popup>
-        <Modal.Header />
-        <Modal.Body>
-          <div className="space-y-6">
-            <h3 className="text-xl font-medium text-gray-900 dark:text-white">
-              Complete Your Order
-            </h3>
-            <div>
-              <div className="mb-2 block">
-                <Label htmlFor="fullname" value="Full Name" />
-              </div>
-              <TextInput
-                name="fullName"
-                id="fullname"
-                value={orderDetails.fullName}
-                onChange={handleChange}
-                required
-                autoComplete="off"
-              />
+      {!userName ? (
+        <Modal show={openModal} size="md" onClose={onCloseModal} popup>
+          <Modal.Header />
+          <Modal.Body>
+            <div className="flex flex-col items-center justify-center gap-2">
+              <h3 className="text-xl font-medium text-gray-900 ">
+                Go to Sign Up your account
+              </h3>
+              <Link to="/signup">
+                <Button className="bg-indigo-600">SignUp</Button>
+              </Link>
             </div>
-            <div>
-              <div className="mb-2 block">
-                <Label htmlFor="address" value="Enter Full Address" />
+          </Modal.Body>
+        </Modal>
+      ) : (
+        <Modal show={openModal} size="md" onClose={onCloseModal} popup>
+          <Modal.Header />
+          <Modal.Body>
+            <div className="space-y-6">
+              <h3 className="text-xl font-medium text-gray-900 ">
+                Complete Your Order
+              </h3>
+              <div>
+                <div className="mb-2 block">
+                  <Label htmlFor="fullname" value="Full Name" />
+                </div>
+                <TextInput
+                  name="fullName"
+                  id="fullname"
+                  value={orderDetails.fullName}
+                  onChange={handleChange}
+                  required
+                  autoComplete="off"
+                />
               </div>
-              <TextInput
-                id="address"
-                name="address"
-                value={orderDetails.address}
-                onChange={handleChange}
-                required
-                autoComplete="off"
-              />
-            </div>
-            <div>
-              <div className="mb-2 block">
-                <Label htmlFor="pin" value="Your Pincode" />
+              <div>
+                <div className="mb-2 block">
+                  <Label htmlFor="address" value="Enter Full Address" />
+                </div>
+                <TextInput
+                  id="address"
+                  name="address"
+                  value={orderDetails.address}
+                  onChange={handleChange}
+                  required
+                  autoComplete="off"
+                />
               </div>
-              <TextInput
-                id="pin"
-                name="pinCode"
-                value={orderDetails.pinCode}
-                onChange={handleChange}
-                type="number"
-                required
-                autoComplete="off"
-              />
-            </div>
-            <div>
-              <div className="mb-2 block">
-                <Label htmlFor="number" value="Your Number" />
+              <div>
+                <div className="mb-2 block">
+                  <Label htmlFor="pin" value="Your Pincode" />
+                </div>
+                <TextInput
+                  id="pin"
+                  name="pinCode"
+                  value={orderDetails.pinCode}
+                  onChange={handleChange}
+                  type="number"
+                  required
+                  autoComplete="off"
+                />
               </div>
-              <TextInput
-                id="number"
-                name="mobile"
-                value={orderDetails.mobile}
-                onChange={handleChange}
-                type="number"
-                required
-                autoComplete="off"
-              />
-            </div>
+              <div>
+                <div className="mb-2 block">
+                  <Label htmlFor="number" value="Your Number" />
+                </div>
+                <TextInput
+                  id="number"
+                  name="mobile"
+                  value={orderDetails.mobile}
+                  onChange={handleChange}
+                  type="number"
+                  required
+                  autoComplete="off"
+                />
+              </div>
 
-            <div className="w-full">
-              <Button onClick={handleOrder} className="w-full bg-indigo-600">
-                Order Now
-              </Button>
+              <div className="w-full">
+                <Button onClick={handleOrder} className="w-full bg-indigo-600">
+                  Order Now
+                </Button>
+              </div>
             </div>
-          </div>
-        </Modal.Body>
-      </Modal>
+          </Modal.Body>
+        </Modal>
+      )}
     </>
   );
 }
