@@ -25,29 +25,22 @@ import SpinnerFullPage from "./components/pages/Home/SpinnerFullPage";
 
 function App() {
   return (
-    <>
-      <ProductProvider>
-        <CartProvider>
-          <BrowserRouter>
-            <Suspense fallback={<SpinnerFullPage />}>
-              <Routes>
-                <Route>
-                  <Route index element={<Home />} />
-                  <Route path="home" element={<Home />} />
-                  <Route path="product" element={<Products />} />
-                  <Route path="about" element={<About />} />
-                  <Route path="contact" element={<Contact />} />
-                  <Route path="cart" element={<Cart />} />
-                  <Route
-                    path="singleProduct/:id"
-                    element={<SingleProducts />}
-                  />
-                  <Route path="login" element={<Login />} />
-                  <Route path="signup" element={<SignUp />} />
-                </Route>
-                <Route path="*" element={<PageNotFound />} />
-              </Routes>
-            </Suspense>
+    <ProductProvider>
+      <CartProvider>
+        <BrowserRouter>
+          <Suspense fallback={<SpinnerFullPage />}>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="home" element={<Home />} />
+              <Route path="product" element={<Products />} />
+              <Route path="about" element={<About />} />
+              <Route path="contact" element={<Contact />} />
+              <Route path="cart" element={<Cart />} />
+              <Route path="singleProduct/:id" element={<SingleProducts />} />
+              <Route path="login" element={<Login />} />
+              <Route path="signup" element={<SignUp />} />
+              <Route path="*" element={<PageNotFound />} />
+            </Routes>
             <Toaster
               toastOptions={{
                 style: {
@@ -61,10 +54,10 @@ function App() {
                 },
               }}
             />
-          </BrowserRouter>
-        </CartProvider>
-      </ProductProvider>
-    </>
+          </Suspense>
+        </BrowserRouter>
+      </CartProvider>
+    </ProductProvider>
   );
 }
 
