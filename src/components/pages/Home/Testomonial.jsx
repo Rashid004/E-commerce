@@ -34,8 +34,8 @@ function Testomonial() {
                   <h3 className="font-bold sm:font-semibold text-sm sm:text-lg md:text-xl my-2">
                     Anna de Armas
                   </h3>
-                  <span className="text-gray-500 font-bold">Customer</span>
-                  <p className="text-center leading-tight text-gray-600">
+                  <span className="text-gray-500 font-bold mb-2">Customer</span>
+                  <p className="text-center leading-tight text-gray-600 w-3/4">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Delectus id quaerat, minima incidunt harum illum iusto sed,
                     beatae et reiciendis dolores quibusdam soluta atque ea
@@ -64,7 +64,7 @@ function Testomonial() {
                     Nicole k.
                   </h3>
                   <span className="text-gray-500 font-bold">Customer</span>
-                  <p className="text-center leading-tight text-gray-600">
+                  <p className="text-center leading-tight text-gray-600 w-3/4">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Delectus id quaerat, minima incidunt harum illum iusto sed,
                     beatae et reiciendis dolores quibusdam soluta atque ea
@@ -93,7 +93,7 @@ function Testomonial() {
                     Migeil
                   </h3>
                   <span className="text-gray-500 font-bold">Customer</span>
-                  <p className="text-center leading-tight text-gray-600">
+                  <p className="text-center leading-tight text-gray-600 w-3/4">
                     Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                     Delectus id quaerat, minima incidunt harum illum iusto sed,
                     beatae et reiciendis dolores quibusdam soluta atque ea
@@ -105,10 +105,10 @@ function Testomonial() {
           </div>
         </SwiperSlide>
       </Swiper>
-      <button className="custom-prev absolute top-1/2 left-4 transform -translate-y-1/2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full p-4 z-10">
+      <button className="custom-prev absolute top-1/2 right-3/4 transform -translate-y-1/2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full p-4 z-10">
         <FaArrowLeft />
       </button>
-      <button className="custom-next absolute top-1/2 right-4 transform -translate-y-1/2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full p-4 z-10">
+      <button className="custom-next absolute top-1/2 left-3/4 transform -translate-y-1/2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full p-4 z-10">
         <FaArrowRight />
       </button>
     </div>

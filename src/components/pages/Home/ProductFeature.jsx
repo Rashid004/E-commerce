@@ -60,7 +60,7 @@ function ProductFeature() {
   return (
     <div className="mx-auto mt-20 sm:mt-4 md:mt-2 pb-24 h-full max-w-6xl">
       <div className="text-center my-4">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-medium sm:font-semibold md:font-bold leading-tight space-y-6 ">
+        <h2 className="text-2xl sm:text-4xl md:text-5xl font-medium sm:font-semibold md:font-bold leading-tight space-y-6 ">
           Our Product
           <div className="mx-auto w-12 h-1 bg-red-600 rounded-sm mt-2 "></div>
         </h2>
@@ -73,11 +73,11 @@ function ProductFeature() {
             <div
               ref={addToRefs}
               key={productItem.id}
-              className=" bg-gray-200 focus:border-gray-200 focus:ring-1 px-4 pt-4 pb-4 sm:px-5 sm:py-5 md:px-6 md:py-5 lg:px-7 lg:py-6 rounded-lg"
+              className=" bg-gray-200 focus:border-gray-200 focus:ring-1 px-4 py-4 sm:px-5 sm:py-5 md:px-6 md:py-5 lg:px-7 lg:py-6 rounded-lg"
             >
               <Link to={`/singleProduct/${productItem.id}`}>
                 <img
-                  className="w-full hover:scale-110 transition-transform duration-300"
+                  className="w-full hover:scale-105 sm:hover:scale-100 md:hover:scale-110 transition-transform duration-300"
                   src={productItem.thumbnail}
                   alt="Product"
                 />

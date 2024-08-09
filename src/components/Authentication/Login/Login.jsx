@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import { auth, googleProvider } from "../../../Firebase/FirebaseAuth";
 import { useState, useEffect } from "react";
+import { BsGoogle } from "react-icons/bs";
 
 function Login() {
   const [userSignIn, setUserSignIn] = useState({
@@ -129,8 +130,9 @@ function Login() {
         <div className="mt-6">
           <button
             onClick={handleGoogleSignIn}
-            className="flex w-full justify-center rounded-md bg-red-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-red-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-600"
+            className="flex items-center gap-2 w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
           >
+            <BsGoogle />
             Sign in with Google
           </button>
         </div>

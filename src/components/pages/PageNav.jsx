@@ -107,34 +107,33 @@ function PageNav() {
             </li>
           ))}
         </ul>
-        <div className="flex items-center space-x-5 text-lg">
-          <NavLink to="/login">
+        <div className="flex items-center space-x-5 text-lg  ">
+          <NavLink to="/login" className="hidden md:block">
             <div
               ref={addToRefs}
-              className="flex items-center justify-center border bg-gray-200 px-2 py-1 rounded-lg md:ml-4"
+              className="flex items-center justify-center  px-2 py-1 rounded-lg md:ml-4"
             >
-              <h3 className="text-sm md:text-xl lg:text-lg font-semibold">
+              <h3 className="text-sm md:text-xl text-white lg:text-lg font-semibold bg-indigo-600 hover:bg-indigo-500 px-2 py-1 rounded-md">
                 {userName ? (
                   <button onClick={() => logOut()}>SignOut</button>
                 ) : (
                   <button onClick={() => navigate("/login")}>Login</button>
                 )}
               </h3>
-              <CiLogin
-                size="1.1em"
-                className="hover:text-indigo-900 cursor-pointer"
-              />
-              <span className="font-semibold capitalize text-xl pl-2 ">
-                {userName}
-              </span>
             </div>
           </NavLink>
+          <NavLink>
+            {" "}
+            <span className="font-semibold capitalize text-xl pl-2 ">
+              {userName}
+            </span>
+          </NavLink>
           <NavLink to="/cart">
-            <span className="bg-indigo-900 text-white font-medium rounded-full h-7 w-7 z-10 absolute text-center translate-x-6">
+            <span className="bg-indigo-900 text-white font-medium rounded-full h-7  w-7 z-10 absolute text-center translate-x-5 md:translate-x-8 md:translate-y-2">
               {addToCart?.length}
             </span>
             <AiOutlineShopping
-              className="hover:text-indigo-900 cursor-pointer relative"
+              className="hover:text-indigo-900 cursor-pointer relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 "
               size="2.5em"
             />
           </NavLink>
@@ -166,6 +165,27 @@ function PageNav() {
                 </NavLink>
               </li>
             ))}
+            <li>
+              <NavLink to="/login">
+                <div
+                  ref={addToRefs}
+                  className="flex items-center justify-center px-2 py-1 rounded-lg md:ml-4"
+                >
+                  <h3 className="text-sm md:text-xl text-white lg:text-lg font-semibold bg-indigo-600 hover:bg-indigo-500 px-3 py-3 md:px-4 md:py-2 rounded-md">
+                    {userName ? (
+                      <button onClick={() => logOut()}>SignOut</button>
+                    ) : (
+                      <button onClick={() => navigate("/login")}>Login</button>
+                    )}
+
+                    {/* <CiLogin
+                  size="1.1em"
+                  className="hover:text-indigo-900 cursor-pointer"
+                /> */}
+                  </h3>
+                </div>
+              </NavLink>
+            </li>
           </ul>
         </div>
       )}

@@ -114,7 +114,7 @@ function Cart() {
                             <button
                               onClick={() => handleRemove(cartItems.id)}
                               type="button"
-                              className="inline-flex items-center text-md font-medium text-indigo-500 hover:underline hover:text-indigo-600 "
+                              className="inline-flex items-center text-md font-medium text-red-500 hover:underline hover:text-red-600 "
                             >
                               <AiOutlineClose />
                               Remove
